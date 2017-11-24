@@ -1,6 +1,7 @@
 extends layout
 
 include mixins/_navigationCard
+include mixins/_jobCard
 
 block content
   //- Div for JUMBOTRON HEADER
@@ -22,6 +23,7 @@ block content
     .row
       .col-lg-12.text-center
         h2 Who we are
+        br
   //- Div for WHO WE ARE CONTENT TEXT
   .container
     .row
@@ -35,4 +37,17 @@ block content
     .row
       .col-lg-12.text-center
         h2 Open Positions
+        br
+        br
+  //- DIV FOR JOBS IF ANY INCLUDE THE CARD MIXIN HERE
+  .container-fluid
+    .row
+      .col-lg-2
+      .col-lg-8.text-center
+        each job in h.jobs
+          +jobCard(job)
+      .col-lg-2
+    br
+    br
+    br
 block footer

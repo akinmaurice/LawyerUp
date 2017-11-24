@@ -59,6 +59,9 @@ exports.careers = 'We’re a team of energetic, talented professionals looking t
                     +'We are hungry for success. We enjoy being the best at our trade and like coming to work'
                     +'(80% of the time!). We are friendly and always enjoy a good beer (or glass of whiskey) '
                     +'with each other at the end of the day.'
+
+//SAMPLE DATA FOR CAREERS PAGE
+exports.jobs = ['Sr. Backend Engineer', 'Javascript Engineer']
 // App Title
 exports.siteName = `Lawyerup`;
 

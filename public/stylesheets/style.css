@@ -681,6 +681,10 @@ textarea {
     border: 1px solid #000;
 }
 
+.jobtext {
+    color: #555f77 !important;
+}
+
 
 /*
 .serviceCard {
