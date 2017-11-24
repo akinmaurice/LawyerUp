@@ -168,4 +168,7 @@ router.post('/contact-lawyer/:slug',
     appointmentController.validateInput,
     catchErrors(appointmentController.createAppointment)
 );
+
+//Router to Get Careers Page
+router.get('/career', catchErrors(appController.careers));
 module.exports = router;

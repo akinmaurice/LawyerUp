@@ -51,6 +51,14 @@ exports.about = 'We are on a journey to make your legal experience remarkable.&n
   + 'on making Legal easier so that you can focus on the things that matter to you.&nbsp;'
   + '<br><br>So whether you have to incorporate your business, want to connect with a&nbsp;'
   + ' a lawyer for any legal issue, it becomes easy, fast and simple with Lawyerup.'
+
+//CAREERS PAGE CONTENT
+exports.careers = 'We’re a team of energetic, talented professionals looking to bring transparency to the legal'
+                    +'industry. We thrive in fast paced and innovative environments. We are honest, uncensored, '
+                    +'and we enjoy sinking our teeth into challenges / problems we don’t know the answers to. '
+                    +'We are hungry for success. We enjoy being the best at our trade and like coming to work'
+                    +'(80% of the time!). We are friendly and always enjoy a good beer (or glass of whiskey) '
+                    +'with each other at the end of the day.'
 // App Title
 exports.siteName = `Lawyerup`;
 

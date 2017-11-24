@@ -1,0 +1,38 @@
+extends layout
+
+include mixins/_navigationCard
+
+block content
+  //- Div for JUMBOTRON HEADER
+  .jumbotron
+    .container.text-center
+      br
+      .row
+        .col-lg-12
+          br
+          br
+          h2 Join #{h.siteName}
+          p Help us provide better service to people
+          a.btn.btn-lg.btn-career(href="#") View Open Positions
+          br
+          br
+          br
+  //- Div for WHO WE ARE
+  .container
+    .row
+      .col-lg-12.text-center
+        h2 Who we are
+  //- Div for WHO WE ARE CONTENT TEXT
+  .container
+    .row
+      .col-lg-3
+      .col-lg-6
+        p.text-about.text-center #{h.careers}
+      .col-lg-3
+    br
+  //- Div for Open Positions
+  .container
+    .row
+      .col-lg-12.text-center
+        h2 Open Positions
+block footer

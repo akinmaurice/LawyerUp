@@ -99,6 +99,7 @@ exports.verifyRequest = (req, res, next) => {
     }
     next();
 }
+
 //CONTROLLER TO SEND ENGAGE LAWYER AND REQUEST FOR ADVICE
 exports.requestLawyer = async (req, res) => {
     req.body.author = req.user._id;
@@ -128,4 +129,9 @@ exports.requestLawyer = async (req, res) => {
         }
     });
     //res.json(req.body);
+}
+
+//Controller to get careers page
+exports.careers = async(req, res) => {
+    res.render('career', {title: 'Careers'});
 }
