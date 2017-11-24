@@ -1,0 +1,681 @@
+body {
+    padding-top: 55px;
+    color: #000505 !important;
+    font-family: karla, sans-serif;
+    width: 100%;
+    background-color: #F5F7FA;
+}
+
+.bg-inverse {
+    /* Browsers without support for gradients*/
+    background: #a026bf;
+    /* Safari*/
+    background: -webkit-linear-gradient(45deg, #e82c75, #a026bf);
+    /* Opera*/
+    background: -o-linear-gradient(45deg, #e82c75, #a026bf);
+    /* Firefox*/
+    background: -moz-linear-gradient(45deg, #e82c75, #a026bf);
+    /* Standard Syntax*/
+    background: linear-gradient(45deg, #e82c75, #a026bf);
+}
+
+.text-red {
+    color: #800909 !important;
+}
+
+.text-primary {
+    color: #0A3981 !important;
+}
+
+.text-warning {
+    color: #e23a08 !important;
+}
+
+.text-success {
+    color: #047507 !important;
+}
+
+.navbar-brand {
+    font-size: 25px;
+}
+
+.navList {
+    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-size: 16px;
+    word-spacing: -1px;
+}
+
+.footer {
+    width: 100%;
+    font-size: 14px;
+    color: #FFFFFF;
+    background-color: #38414f;
+    word-spacing: -1px;
+    line-height: 200%;
+    font-family: Ubuntu, "Montserrat", sans-serif;
+}
+
+.footer a {
+    color: #FFF !important;
+}
+
+.form-signin {
+    max-width: 500px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+    font-weight: normal;
+}
+
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.form-signin button {
+    margin-bottom: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    font-size: 15px;
+}
+
+.commentavatar {
+    width: 50px;
+    height: 50px;
+    min-height: 50px;
+    min-width: 50px;
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.btn {
+    margin: 5px;
+    word-spacing: 3px;
+    letter-spacing: 1px;
+    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-size: 20px;
+}
+
+textarea {
+    resize: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+
+/*
+ * Component: Small Box
+ * --------------------
+ */
+
+.small-box {
+    border-radius: 2px;
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.small-box>.inner {
+    padding: 10px;
+}
+
+.small-box>.small-box-footer {
+    position: relative;
+    text-align: center;
+    padding: 3px 0;
+    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+.small-box>.small-box-footer:hover {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.small-box h3 {
+    font-size: 38px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    white-space: nowrap;
+    padding: 0;
+}
+
+.small-box p {
+    font-size: 15px;
+}
+
+.small-box p>small {
+    display: block;
+    color: #f9f9f9;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.small-box h3,
+.small-box p {
+    z-index: 5;
+}
+
+.small-box .icon {
+    -webkit-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    z-index: 0;
+    font-size: 90px;
+    color: rgba(0, 0, 0, 0.15);
+}
+
+.small-box:hover {
+    text-decoration: none;
+    color: #f9f9f9;
+}
+
+.small-box:hover .icon {
+    font-size: 95px;
+}
+
+@media (max-width: 767px) {
+    .small-box {
+        text-align: center;
+    }
+    .small-box .icon {
+        display: none;
+    }
+    .small-box p {
+        font-size: 12px;
+    }
+}
+
+.headtext {
+    font-size: 60px;
+}
+
+.headbody {
+    font-family: Roboto, 'Sans Serif';
+}
+
+.jumbotron {
+    background: #f5576c;
+    background: -webkit-linear-gradient(45deg, #f093fb, #f5576c);
+    background: -o-linear-gradient(45deg, #f093fb, #f5576c);
+    background: -moz-linear-gradient(45deg, #f093fb, #f5576c);
+    background: linear-gradient(45deg, #f093fb, #f5576c);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.jumbotron-heading {
+    font-weight: 300;
+}
+
+.text-danger {
+    color: #800909 !important;
+}
+
+.headtext {
+    word-spacing: 3px;
+    font-size: 25px;
+}
+
+button.navbar-toggler.navbar-toggler-right {
+    border-color: #FFF;
+}
+
+.btn-law {
+    background-color: #5846c7;
+}
+
+.single__map {
+    width: 100%;
+    max-width: 100%;
+    height: 400px;
+    max-height: 400px;
+}
+
+.aboutImage {
+    width: 100%;
+    max-width: 100%;
+    height: 200px;
+    max-height: 400px;
+    min-height: 400px;
+}
+
+label {
+    font-size: 20px;
+}
+
+textarea {
+    resize: none;
+}
+
+.form-contact .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-contact .form-control:focus {
+    z-index: 2;
+}
+
+.form-contact input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-contact input[type="email"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.form-contact input[type="phone"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-contact textarea {
+    margin-bottom: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.form-contact button {
+    margin-bottom: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    font-size: 15px;
+}
+
+.btn-index {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    word-spacing: 3px;
+    letter-spacing: 1px;
+    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-size: 20px;
+}
+
+.a-index {
+    color: #0069d9 !important;
+    text-decoration: underline;
+}
+
+.signinText {
+    font-size: 15px;
+    word-spacing: 1px;
+    letter-spacing: .3px;
+}
+
+.inHr {
+    color: #FFF !important;
+}
+
+.card {
+    margin: 5px;
+}
+
+.btn-tag {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    word-spacing: 3px;
+    letter-spacing: 1px;
+    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.text-subhead {
+    word-spacing: 3px;
+    letter-spacing: 1px;
+    font-size: 22px;
+    line-height: 150%;
+    font-family: Ubuntu, "Montserrat", sans-serif;
+}
+
+.form-group p {
+    font-size: 12px;
+    word-spacing: 1px;
+    letter-spacing: .5px;
+    font-family: Ubuntu, "Montserrat", sans-serif;
+}
+
+.lawyer-card {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.card-form {
+    border-color: #a026bf;
+}
+
+.card-form .card-header {
+    border-color: #a026bf;
+}
+
+.lawyer-image {
+    min-height: 150px;
+    max-height: 150px;
+    width: 150px;
+    min-width: 150px;
+}
+
+.btn-lawyer {
+    font-size: 12px;
+    word-spacing: 1px;
+    letter-spacing: .5px;
+    font-family: Ubuntu, "Montserrat", sans-serif;
+}
+
+.lawyer-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.btn-default {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.btn-default:hover {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.form-lawyer {
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-lawyer .form-signin-heading,
+.form-lawyer .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-lawyer .checkbox {
+    font-weight: normal;
+}
+
+.form-lawyer .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-lawyer .form-control:focus {
+    z-index: 2;
+}
+
+.form-lawyer input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-lawyer input[type="email"] {
+    margin-bottom: -1px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.form-lawyer input[type="password"] {
+    margin-bottom: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.form-lawyer button {
+    margin-bottom: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    font-size: 15px;
+}
+
+.form-check-label {
+    font-size: 14px;
+}
+
+.btn-sm {
+    font-size: 15px;
+}
+
+.services {
+    word-spacing: 1px;
+    letter-spacing: 1px;
+    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-size: 20px;
+}
+
+.serviceIcon {
+    color: #e82c75 !important;
+}
+
+.btn-app {
+    background-color: #38414f;
+    color: #FFF;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    word-spacing: 3px;
+    letter-spacing: 1px;
+    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.labelContact {
+    font-size: 17px;
+}
+
+.lawyerHomeImageCard {
+    min-height: 350px;
+    max-height: 350px;
+    width: 100%;
+}
+
+.btnAppointmentLawyer {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-size: 16px;
+    color: #FFF !important;
+}
+
+.btnContactLawyer {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-size: 16px;
+    color: #000 !important;
+}
+
+.lawyerName {
+    word-spacing: 1px;
+    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-size: 17px;
+}
+
+.formRequest .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.formRequest .form-control:focus {
+    z-index: 2;
+}
+
+.formRequest input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.formRequest input[type="email"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.formRequest input[type="phone"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.formRequest textarea {
+    margin-bottom: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.formRequest button {
+    margin-bottom: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    font-size: 15px;
+}
+
+.btnNav {
+    color: #FFF !important;
+    border-color: #ffc107;
+    background-color: inherit;
+    font-size: 14px;
+}
+
+.btnNav:hover,
+.btnNav:focus,
+.btnNav:active {
+    color: #000 !important;
+    background-color: #ffc107;
+}
+
+.formContactLawyer {
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.formContactLawyer .checkbox {
+    font-weight: normal;
+}
+
+.formContactLawyer .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.formContactLawyer .form-control:focus {
+    z-index: 2;
+}
+
+.formContactLawyer input[name="phone"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.formContactLawyer input[type="email"] {
+    margin-bottom: -1px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.formContactLawyer button {
+    margin-bottom: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    font-size: 15px;
+}
+
+.breadcrumb {
+    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-size: 15px;
+}
+
+.text-about {
+    color: #555f77;
+    font-family: "Lato";
+    font-size: 16px;
+}
+
+
+/*
+.serviceCard {
+    border: none;
+}
+*/

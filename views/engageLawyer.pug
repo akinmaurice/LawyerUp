@@ -1,0 +1,19 @@
+extends layout
+
+include mixins/_navigationCard
+include mixins/_legalRequestForm
+include mixins/_flashMessages
+
+block content
+  +flashMessages()
+  +navigationCard(title)
+  .container
+    .row.text-center
+      .col-lg-12.col-md-12.col-sm-12
+          p.lawyerName Tell us a little about your case and we'll have a lawyer reach out to you. Or,&nbsp;
+            a(href="/directory") search for a lawyer&nbsp;
+            span that meets your need
+    .row
+      .col-lg-12.col-md-12.col-sm-12
+        +legalRequestForm()
+block footer

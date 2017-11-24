@@ -1,0 +1,79 @@
+mixin lawyerHomeCard(lawyer = {})
+  .row
+    .col-lg-3.col-md-12.col-sm-12
+      .card.lawyer-card
+          .card-body
+            img(src="/images/profile.png", alt="dhdh").lawyerHomeImageCard
+    .col-lg-9.col-md-12.col-sm-12
+      .row.text-center
+        .col-lg-12
+          .card.lawyer-card
+            if title === `Contact ${lawyer.name}`
+              .card-header
+                h6 #{title}
+              .card-body
+                form.formContactLawyer(method="POST")
+                  .row
+                    .col-lg-6.col-md-6.col-sm-12
+                      .form-group
+                        input(type="hidden" name="lawyer" value=`${lawyer._id}`)
+                        input(type="text" name="name" id="name" placeholder="Full Name" value=`${user.name}`).form-control.form-control-lg
+                    .col-lg-6.col-md-6.col-sm-12
+                      .form-group
+                        input(type="email" name="email" id="email" placeholder="Email Address" value=`${user.email}`).form-control.form-control-lg
+                    .col-lg-6.col-md-6.col-sm-12
+                      .form-group
+                        input(type="phone" name="phone" id="phone" placeholder="Phone Number" value=`${user.phone || ''}`).form-control.form-control-lg
+                  .row.text-left
+                    .col-lg-12
+                      button(type="submit").btn.btn-primary Contact Lawyer
+            else
+              .card-body
+                a.btn.btn-primary.btnAppointmentLawyer(href=`/contact-lawyer/${lawyer.slug}`)
+                  i.fa.fa-calendar-plus-o &nbsp;
+                  span Schedule an Appointment
+                a.btn.btn-warning.btnContactLawyer(href=`/contact-lawyer/${lawyer.slug}`)
+                  i.fa.fa-envelope-o &nbsp;
+                  span Contact Lawyer
+            .card-footer
+              .row.text-center
+                .col-lg-4.col-xs-12
+                  i.fa.fa-money.text-success &nbsp;&nbsp;
+                  span &#8358;1000/hr
+                .col-lg-4.col-xs-12
+                  i.fa.fa-map-marker.text-primary &nbsp;&nbsp;
+                  span #{lawyer.location}
+                .col-lg-4.col-xs-12
+                  i.fa.fa-thumbs-up.text-primary &nbsp;&nbsp;
+                  span 5/5
+      .row.text-center
+        .col-lg-12
+          .card.lawyer-card
+            .card-body
+              .card-title
+                h4 Licensed & Certified to Practice
+                br
+                ul.list-inline
+                  each tag in lawyer.tags
+                    li.list-inline-item
+                      a.btn.btn-default.btn-lawyer #{tag}
+            .card-footer
+              .row
+                .col-lg-6.col-md-6.col-sm-6.col-xs-12
+                  i.fa.fa-check-circle.text-primary &nbsp;&nbsp;
+                  span.text-muted MEMBER SINCE:&nbsp;&nbsp;
+                  span #{h.moment(lawyer.created).fromNow()}
+                .col-lg-6.col-md-6.col-sm-6.col-xs-12
+                  i.fa.fa-id-badge.text-warning &nbsp;&nbsp;
+                  span.text-muted LICENSED FOR:&nbsp;&nbsp;
+                  span 9 years
+      .row.text-center
+        .col-lg-12
+          .card.lawyer-card
+            .card-body
+              .card-title
+                h4 About
+                p.text-justify #{lawyer.about}
+      .row.text-center
+        .col-lg-12
+           br

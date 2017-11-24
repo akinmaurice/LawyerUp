@@ -1,0 +1,49 @@
+mixin legalRequestForm()
+  .card.my-4.card-form
+    .card-body
+      form(action="/engage" method="post").formRequest
+        .row
+          .col-lg-6.col-md-6.col-sm-12
+            .form-group
+              label(for="name").labelContact Name
+              input(type="text" name="name" id="name" placeholder="Full Name" value=`${user.name}`).form-control.form-control-lg
+          .col-lg-6.col-md-6.col-sm-12
+            .form-group
+              label(for="email").labelContact Email Address
+              input(type="email" name="email" id="email" placeholder="Email Address" value=`${user.email}`).form-control.form-control-lg
+        .row
+          .col-lg-6.col-md-6.col-sm-12
+            .form-group
+              label(for="phone").labelContact Phone
+              input(type="phone" name="phone" id="phone" placeholder="Phone Number" value=`${user.phone || ''}`).form-control.form-control-lg
+          .col-lg-6.col-md-6.col-sm-12
+            .form-group
+              label(for="contactMethod").labelContact Prefered method to contact you
+              select(name="contactMethod" id="contactMethod").form-control.form-control-lg
+                option(disabled selected) Please Select one
+                each method in h.contactMethod
+                  option(value=`${method}`) #{method}
+        .row
+          .col-lg-6.col-md-6.col-sm-12
+            .form-group
+              label(for="legalService").labelContact Legal Services Required
+              select(name="legalService" id="legalService").form-control.form-control-lg
+                option(disabled selected) Please Select one
+                each service in h.tags
+                  option(value=`${service}`) #{service}
+          .col-lg-6.col-md-6.col-sm-12
+            .form-group
+              label(for="location").labelContact Location
+              select(name="location" id="location").form-control.form-control-lg
+                option(disabled selected) Please Select one
+                each location in h.location
+                  option(value=`${location}`) #{location}
+        .row
+          .col-lg-6.col-md-6.col-sm-12
+            .form-group
+              label(for="message").labelContact Legal Request
+              textarea(rows="10" name="message" id="message" placeholder="Details about your legal request").form-control
+        .row
+          .col-lg-6.col-md-6.col-sm-12
+            .form-group.text-center
+              button(type="submit").btn.btn-primary.btn-lg Send Request

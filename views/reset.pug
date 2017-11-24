@@ -1,0 +1,16 @@
+extends layout
+
+include mixins/_flashMessages
+include mixins/_navigationCard
+
+block content
+  +flashMessages()
+  +navigationCard(title)
+  form.form-signin(method="POST")
+    .form-group
+      input(type="password" name="password" placeholder="New Password").form-control.form-control-lg
+    .form-group
+      input(type="password" name="passwordConfirm" placeholder="Password Confirm").form-control.form-control-lg
+    .form-group
+      button.btn.btn-primary.btn-lg.btn-block(type="submit") Reset Password
+block footer

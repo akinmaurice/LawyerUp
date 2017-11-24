@@ -1,0 +1,13 @@
+mixin flashMessages()
+  .container
+    .row.text-center
+       block messages
+         if locals.flashes
+           .col-lg-12.text-center
+              .flash-messages
+              - const categories = Object.keys(locals.flashes)
+              each category in categories
+                each message in flashes[category]
+                  .flash(class=`alert alert-${category}` role="alert")
+                    p.flash__text!= message
+                    button.flash__remove(onClick="this.parentElement.remove()") &times;

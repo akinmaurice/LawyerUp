@@ -1,0 +1,8 @@
+mixin tagsPagination(tag ,page, pages, count)
+  nav(aria-label="page navigation example")
+    ul.pagination
+      if page > 1
+        li.page-item
+          a(href=`/tags/${tag}/directory/page/${page - 1}`).btn.btn-primary.btn-sm Prev
+      if page < pages
+        a(href=`/tags/${tag}/directory/page/${parseFloat(page) + 1}`).btn.btn-primary.btn-sm Next

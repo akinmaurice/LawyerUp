@@ -1,0 +1,18 @@
+extends layout
+
+include mixins/_registerUserForm
+include mixins/_navigationCard
+include mixins/_flashMessages
+
+block content
+  +flashMessages()
+  +navigationCard(title)
+  .col-md-12.text-center
+    h1.my-4
+      +registerUserForm()
+
+block footer
+
+
+
+

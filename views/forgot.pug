@@ -1,0 +1,16 @@
+extends layout
+
+include mixins/_navigationCard
+
+block content
+  +navigationCard(title)
+  form.form-signin(method="POST")
+    .form-group
+      input(type="email" name="email" placeholder="Email Address").form-control.form-control-lg
+    .form-group
+      button.btn.btn-primary.btn-lg.btn-block(type="submit") Reset Password
+    .form-group.text-center
+      p.signinText Don't have an account?&nbsp;
+        a(href="/register") Sign Up&nbsp;
+        span here
+block footer

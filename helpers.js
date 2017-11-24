@@ -1,0 +1,56 @@
+/*
+  This is a file of data and helper functions that we can expose and use in our templating function
+*/
+
+// FS is a built in module to node that let's us read files from the system we're running on
+const fs = require('fs');
+
+// moment.js is a handy library for displaying dates. We need this in our templates to display things like "Posted 5 minutes ago"
+exports.moment = require('moment');
+
+//SETUP MENU VARIABLES FOR INDEX PAGE
+exports.menu = [
+  { title: 'Engage a Lawyer', icon: 'users', link: '/engage' },
+  { title: 'Find Lawyers', icon: 'search', link: '/directory' },
+  { title: 'Business Name Registration', icon: 'trademark', link: '/agreement' },
+  { title: 'Draft Legal Agreements', icon: 'file-text-o', link: '/agreement' }
+  //{  title: 'Free Legal Advice', icon: 'comments-o', link: '/legal-advice'}
+];
+
+//Setup TAGS
+exports.tags = ['Civil Litigation', 'Corporate Law', 'Labour and Services',
+  'Divorce and Alimony', 'Property and Real Estate', 'Criminal Defense',
+  'Debt Recovery', 'Transactional Law', 'Immigration', 'Employment', 'Public Interest', 'Dispute Resolution'];
+
+//CONTACT METHOD
+exports.contactMethod = ['Phone Call', 'Email', 'Schedule a Meeting with a Lawyer'];
+
+//CONTACT METHOD
+exports.location = ['Abia', 'Abuja', 'Adamawa', 'Akwa Ibom', 'Anambra', 'Bauchi',
+  'Bayelsa', 'Benue', 'Borno', 'Cross River', 'Delta', 'Ebonyi', 'Edo', 'Ekiti', 'Enugu',
+  'Gombe', 'Imo', 'Jigawa', 'Kaduna', 'Kano', 'Katsina', 'Kebbi', 'Kogi', 'Kwara', 'Lagos',
+  'Nassarawa', 'Niger', 'Ogun', 'Ondo', 'Osun', 'Oyo', 'Plateau', 'Rivers', 'Sokoto',
+  'Taraba', 'Yobe', 'Zamfara'];
+
+// Dump is a handy debugging function we can use to sort of "console.log" our data
+exports.dump = (obj) => JSON.stringify(obj, null, 2);
+
+
+//DIY DOCUMENTS JSON FILE
+exports.diy = [
+  {title: 'Rent Agreement', icon: 'home', documents: ['Rental Agreement', 'Quit Notice']},
+  {title: 'Business Registration', icon: 'home', documents: ['Business Name Registration', 'Company Incorporation']}
+];
+//ABOUT PAGE CONTENT
+exports.about = 'We are on a journey to make your legal experience remarkable.&nbsp;'
+  + 'Our law is created to protect us,&nbsp;'
+  + 'empower us - but many of us either do not get the legal help or refrain from getting involved in&nbsp;'
+  + 'legal matter due to factors like complexity, lack of knowledge and affordability to name a few.'
+  + '<br><br>At Lawyerup, we want to make connecting with lawyers simple, easy, fast and most of all approachable&nbsp;'
+  + 'by making it available to more people than ever before. Every day we spend time and our resources&nbsp;'
+  + 'on making Legal easier so that you can focus on the things that matter to you.&nbsp;'
+  + '<br><br>So whether you have to incorporate your business, want to connect with a&nbsp;'
+  + ' a lawyer for any legal issue, it becomes easy, fast and simple with Lawyerup.'
+// App Title
+exports.siteName = `Lawyerup`;
+

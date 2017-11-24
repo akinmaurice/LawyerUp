@@ -1,0 +1,6 @@
+mixin editAccountForm()
+  form.form-signin(method="POST")
+    .form-group
+      input(type="text" name="name" value=`${user.name}`).form-control.form-control-lg
+    .form-group
+      button.btn.btn-primary.btn-lg.btn-block(type="submit") Update Account

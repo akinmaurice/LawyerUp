@@ -1,0 +1,14 @@
+extends layout
+
+include mixins/_navigationCard
+include mixins/_diyCard
+
+block content
+  +navigationCard(title)
+  br
+  .container
+    .row
+      each diy in h.diy
+        .col-lg-4
+          +diyCard(diy)
+block footer

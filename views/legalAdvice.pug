@@ -1,0 +1,16 @@
+extends layout
+
+include mixins/_navigationCard
+include mixins/_legalRequestForm
+include mixins/_flashMessages
+
+block content
+  +flashMessages()
+  +navigationCard(title)
+  .container
+    .row
+      .col-lg-3.col-md-12.col-sm-12
+      .col-lg-6.col-md-12.col-sm-12
+        +legalRequestForm()
+      .col-lg-3.col-md-12.col-sm-12
+block footer

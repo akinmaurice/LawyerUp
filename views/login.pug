@@ -1,0 +1,22 @@
+extends layout
+
+include mixins/_navigationCard
+include mixins/_flashMessages
+
+block content
+  +flashMessages()
+  +navigationCard(title)
+  form.form-signin(method="POST")
+    .form-group
+      input(type="email" name="email" placeholder="Email Address").form-control.form-control-lg
+    .form-group
+      input(type="password" name="password" placeholder="Password").form-control.form-control-lg
+    .form-group
+      button.btn.btn-primary.btn-lg.btn-block(type="submit") Sign In
+    .form-group.text-center
+      p.signinText Don't have an account?&nbsp;
+        a(href="/register") Sign Up&nbsp;
+        span here
+      p.signinText
+        a(href="/forgot") Forgot Password
+block footer

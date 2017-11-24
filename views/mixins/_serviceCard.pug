@@ -1,0 +1,9 @@
+mixin serviceCard(service = {})
+  .col-lg-3
+    .card.serviceCard
+      .card-heading
+        span.fa.fa-stack.fa-4x
+          i( class=`fa fa-${service.icon} fa-stack-1x serviceIcon`)
+      .card-body
+        h5.services #{service.title}
+        a(href=`${service.link}`).btn.btn-app.btn-sm Learn More

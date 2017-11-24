@@ -1,0 +1,25 @@
+mixin lawyerForm()
+  form.form-lawyer(method="POST")
+    .form-group
+      input(type="text" name="name" placeholder="Full Name").form-control.form-control-lg
+    .form-group
+      input(type="email" name="email" placeholder="Email Address").form-control.form-control-lg
+    .form-group
+      input(type="password" name="password" placeholder="Password").form-control.form-control-lg
+    .form-group
+      input(type="password" name="password-confirm" placeholder="Confirm Password").form-control.form-control-lg
+    .form-group
+      select(name="location" id="location").form-control.form-control-lg
+        option(disabled selected) Please Select Your Location
+        each location in h.location
+          option(value=`${location}`) #{location}
+    .form-group.text-left
+      each choice in h.tags
+        .form-check.form-check-inline
+          label.form-check-label(for="choice") #{choice}&nbsp;
+            input(type="checkbox" id="choice" name="tags" value=choice)
+    .form-group
+      button.btn.btn-primary.btn-lg.btn-block(type="submit") Create Account
+    .form-group.center
+      p By Signing up you agree to the&nbsp;
+        a(href="/terms") Terms and Conditions

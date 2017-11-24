@@ -1,0 +1,14 @@
+extends layout
+
+include mixins/_navigationCard
+include mixins/_lawyerHomeCard
+include mixins/_flashMessages
+
+block content
+  +flashMessages()
+  +navigationCard(title)
+  .container-fluid
+    .row
+      .col-lg-12
+        +lawyerHomeCard(lawyer)
+block footer

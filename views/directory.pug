@@ -1,0 +1,16 @@
+extends layout
+
+include mixins/_navigationCard
+include mixins/_lawyerCard
+include mixins/_directoryPagination
+
+block content
+  +navigationCard(title)
+  .container-fluid
+    .row
+      .col-lg-9
+        if lawyers.length >= 1
+          each lawyer in lawyers
+            +lawyerCard(lawyer)
+          +pagination(page, pages, count)
+block footer

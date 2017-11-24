@@ -1,0 +1,26 @@
+extends layout
+
+include mixins/_navigationCard
+
+block content
+  +navigationCard()
+  .container
+    .row
+      .col-lg-12
+        .card
+          .card-body
+            .row
+              .col-lg-12.text-center
+                h1 - Our Mission -
+                p.text-about.text-justify.text-center To provide access to Legal Practioners for everyone
+                br
+            .row
+              .col-lg-2.col-md-2
+              .col-lg-8.col-md-8
+                h1.text-center - About -
+                br
+                p.text-about.text-justify!= h.about
+                br
+              .col-lg-2.col-md-2
+    .row
+      br

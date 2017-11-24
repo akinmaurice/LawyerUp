@@ -1,0 +1,12 @@
+extends layout
+
+include mixins/_navigationCard
+include mixins/_flashMessages
+include mixins/_editAccountForm
+
+block content
+  +flashMessages()
+  +navigationCard(title)
+  .col-md-12.text-center
+    +editAccountForm()
+block footer

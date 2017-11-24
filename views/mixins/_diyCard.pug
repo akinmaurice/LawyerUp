@@ -1,0 +1,10 @@
+mixin diyCard(diy = {})
+  h4
+    i.fa.fa-home.text-warning &nbsp;&nbsp;
+    span #{diy.title}
+    hr
+  ul.list-unstyled
+    each document in diy.documents
+      li
+        i.fa.fa-file-text-o &nbsp;&nbsp;
+        span #{document}

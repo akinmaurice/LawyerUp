@@ -1,0 +1,122 @@
+doctype html
+html(lang="en")
+  head
+    title= `${title} | ${h.siteName}`
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    link(rel="icon" type="image/png" href="/favicon.ico")
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-social.css')
+    link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
+    link(rel='stylesheet', href='/stylesheets/ionicons.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Karla|Montserrat|Open+Sans|Ubuntu|Lato")
+    script(src='/javascripts/jquery/jquery.min.js')
+    script(src='/javascripts/bootstrap.min.js')
+    script(src='/javascripts/popper/popper.min.js')
+    script(src='/javascripts/bootstrap.bundle.min.js')
+  body.text-justify
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-inverse.fixed-top
+      .container-fluid
+        a(href="/").navbar-brand #{h.siteName}
+        button(type="button" data-toggle="collapse" data-target="#navbarCollapse"  aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation").navbar-toggler.navbar-toggler-right
+          span.navbar-toggler-icon
+        .collapse.navbar-collapse(id="navbarCollapse")
+          ul.navbar-nav.ml-auto.navList
+            li.nav-item.active
+              a(href="/about").nav-link About Us
+                span.sr-only (current)
+            li.nav-item.active
+              a(href="/agreement").nav-link DIY Agreements
+                span.sr-only (current)
+            li.nav-item.active
+              a(href="/directory").nav-link Lawyer Directory
+                span.sr-only (current)
+            li.nav-item.active
+              a(href="/engage").nav-link Engage a Lawyer
+                span.sr-only (current)
+            if user
+              li.nav-item.active.dropdown
+                a(href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false").nav-link.dropdown-toggle #{user.email}
+                .dropdown-menu(aria-labelledby="dropdown01")
+                  a.dropdown-item(href="/user/edit-password")
+                    i.fa.fa-lock &nbsp;&nbsp;&nbsp;
+                      span Edit Password
+                  a.dropdown-item(href="/user/edit-profile")
+                    i.fa.fa-user &nbsp;&nbsp;&nbsp;
+                      span Edit Profile
+                  a.dropdown-item(href="/logout")
+                    i.fa.fa-sign-out &nbsp;&nbsp;&nbsp;
+                      span Logout
+            else
+              li.nav-item.active
+                a(href="/login" class="btn btnNav").nav-link Sign In
+                  span.sr-only (current)
+
+
+    block content
+
+    block footer
+      footer.py-5.footer
+        .container
+          .row
+            .col-lg-3.col-md-3.col-sm-3.col-xs-12
+              h6 ABOUT
+              ul.list-unstyled
+                li
+                  a(href="/about") About Us
+                li
+                  a(href="/contact") Contact Us
+                li
+                  a(href="/career") Career
+                li
+                  a(href="#") Blog
+                li &nbsp;
+            .col-lg-3.col-md-3.col-sm-3.col-xs-12
+              h6 SERVICES
+              ul.list-unstyled
+                li
+                  a(href="/agreement") DIY Agreements
+                li
+                  a(href="/appointment") Make and Appointment
+                li &nbsp;
+            .col-lg-3.col-md-3.col-sm-3.col-xs-12
+              h6 LEGAL
+              ul.list-unstyled
+                li
+                  a(href="/terms") Terms
+                li
+                  a(href="/policy") Policy
+                li
+                  a(href="/disclaimer") Disclaimer
+                li &nbsp;
+            .col-lg-3.col-md-3.col-sm-3.col-xs-12
+              h6 QUICK LINKS
+              ul.list-unstyled
+                li
+                  a(href="/directory") Lawyer Directory
+                li
+                  a(href="/join-us") Lawyer Sign Up
+                li
+                  a(href="/call-request") Request Call Back
+                li
+                  a(href="/faq") FAQ
+                li &nbsp;
+          .row
+            .col-lg-12.text-center
+              ul.list-inline
+                li.list-inline-item
+                  a.btn.btn-social-icon.btn-facebook.btn-sm(href="" target="_blank")
+                    span.fa.fa-facebook-square.smicons
+                li.list-inline-item
+                  a.btn.btn-social-icon.btn-pinterest.btn-sm(href="" target="_blank")
+                    span.fa.fa-youtube-play.smicons
+                li.list-inline-item
+                  a.btn.btn-social-icon.btn-twitter.btn-sm(href="" target="_blank")
+                    span.fa.fa-twitter-square.smicons
+                li.list-inline-item
+                  a.btn.btn-social-icon.btn-instagram.btn-sm(href="" target="_blank")
+                    span.fa.fa-instagram.smicons
+          .row
+            .col-lg-12.text-center
+              p.m-0.text-center  &copy; #{h.siteName} #{h.moment().format('YYYY')}
+
