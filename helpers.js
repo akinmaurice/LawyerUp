@@ -63,10 +63,8 @@ exports.careers = ['We’re a team of energetic, talented professionals looking 
                     +'with each other at the end of the day.',
                     'We work hard and play harder. We strive to deliver an experience that’s unique.&nbsp;'
                     +'And above all, we respect our customers through a high quality and transparent product and service offering.'
-                  ]
+                  ];
 
-//SAMPLE DATA FOR CAREERS PAGE
-exports.jobs = ['Sr. Backend Engineer', 'Javascript Engineer']
 // App Title
 exports.siteName = `Lawyerup`;
 
