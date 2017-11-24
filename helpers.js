@@ -38,8 +38,10 @@ exports.dump = (obj) => JSON.stringify(obj, null, 2);
 
 //DIY DOCUMENTS JSON FILE
 exports.diy = [
-  {title: 'Rent Agreement', icon: 'home', documents: ['Rental Agreement', 'Quit Notice']},
-  {title: 'Business Registration', icon: 'home', documents: ['Business Name Registration', 'Company Incorporation']}
+  {title: 'Rent Agreement', icon: 'home', color: 'default' , documents: ['Rental Agreement', 'Quit Notice', 'Lease Agreement']},
+  {title: 'Business Management', icon: 'bar-chart', color: 'success' , documents: ['Business Name Registration', 'Company Incorporation', 'Non-Disclosure', 'Co-Founders Agreement', 'Terms and Conditions']},
+  {title: 'Employment', icon: 'users', color: 'primary' , documents: ['Job Offer Letter', 'Termination Letter' , 'Employment Agreement', 'Non-Disclosure', 'Employee Warning', 'Resignation Letter']},
+  {title: 'Settle Disputes', icon: 'gavel', color: 'danger' , documents: ['Concillation Agreement', 'Mediation Agreement']}
 ];
 //ABOUT PAGE CONTENT
 exports.about = 'We are on a journey to make your legal experience remarkable.&nbsp;'
@@ -53,12 +55,15 @@ exports.about = 'We are on a journey to make your legal experience remarkable.&n
   + ' a lawyer for any legal issue, it becomes easy, fast and simple with Lawyerup.'
 
 //CAREERS PAGE CONTENT
-exports.careers = 'We’re a team of energetic, talented professionals looking to bring transparency to the legal'
+exports.careers = ['We’re a team of energetic, talented professionals looking to bring transparency to the legal'
                     +'industry. We thrive in fast paced and innovative environments. We are honest, uncensored, '
                     +'and we enjoy sinking our teeth into challenges / problems we don’t know the answers to. '
                     +'We are hungry for success. We enjoy being the best at our trade and like coming to work'
                     +'(80% of the time!). We are friendly and always enjoy a good beer (or glass of whiskey) '
-                    +'with each other at the end of the day.'
+                    +'with each other at the end of the day.',
+                    'We work hard and play harder. We strive to deliver an experience that’s unique.&nbsp;'
+                    +'And above all, we respect our customers through a high quality and transparent product and service offering.'
+                  ]
 
 //SAMPLE DATA FOR CAREERS PAGE
 exports.jobs = ['Sr. Backend Engineer', 'Javascript Engineer']

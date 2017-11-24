@@ -1,10 +1,13 @@
 mixin diyCard(diy = {})
   h4
-    i.fa.fa-home.text-warning &nbsp;&nbsp;
+    i(class=`fa fa-${diy.icon} text-${diy.color}`) &nbsp;&nbsp;
     span #{diy.title}
     hr
-  ul.list-unstyled
+  ul.list-unstyled.diyList
     each document in diy.documents
       li
         i.fa.fa-file-text-o &nbsp;&nbsp;
-        span #{document}
+        span
+          a(href="#") #{document}
+  br
+  br

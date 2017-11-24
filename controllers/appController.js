@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Request = mongoose.model('Request');
+const Job = mongoose.model('Job');
 const promisify = require('es6-promisify');
 const mail = require('../handlers/mail');
 const pug = require('pug');
@@ -133,5 +134,6 @@ exports.requestLawyer = async (req, res) => {
 
 //Controller to get careers page
 exports.careers = async(req, res) => {
-    res.render('career', {title: 'Careers'});
+    const jobs = await Job.find();
+    res.render('career', {title: 'Careers', jobs});
 }

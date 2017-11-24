@@ -249,6 +249,8 @@ a:hover {
     -o-background-size: cover;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
 }
 
 .jumbotron-heading {
@@ -672,6 +674,7 @@ textarea {
     font-family: "Lato";
     font-size: 16px;
     word-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .btn-career {
@@ -681,8 +684,37 @@ textarea {
     border: 1px solid #000;
 }
 
+.btn-career:hover {
+    background-color: transparent;
+    color: #000;
+    font-size: 16px;
+    border: 1px solid #000;
+}
+
 .jobtext {
     color: #555f77 !important;
+}
+
+.diyList {
+    font-size: 16px;
+    word-spacing: 2px;
+    line-height: 200%;
+}
+
+.diyList a {
+    font-size: 16px;
+    word-spacing: 2px;
+    line-height: 200%;
+    color: #000;
+    text-decoration: none;
+}
+
+.diyList a:hover {
+    font-size: 16px;
+    word-spacing: 2px;
+    line-height: 200%;
+    color: #000;
+    text-decoration: none;
 }
 
 

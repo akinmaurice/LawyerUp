@@ -14,7 +14,7 @@ block content
           br
           h2 Join #{h.siteName}
           p Help us provide better service to people
-          a.btn.btn-lg.btn-career(href="#") View Open Positions
+          a.btn.btn-lg.btn-career(href="#positions") View Open Positions
           br
           br
           br
@@ -22,6 +22,7 @@ block content
   .container
     .row
       .col-lg-12.text-center
+        br
         h2 Who we are
         br
   //- Div for WHO WE ARE CONTENT TEXT
@@ -29,13 +30,31 @@ block content
     .row
       .col-lg-3
       .col-lg-6
-        p.text-about.text-center #{h.careers}
+        p.text-about.text-center #{h.careers[0]}
       .col-lg-3
     br
+    br
+  //- Div for JUMBOTRON WHAT WE DO
+  .jumbotron
+    .container.text-center
+      br
+      .row
+        .col-lg-3
+        .col-lg-6
+          br
+          br
+          h2 Our Values
+          br
+          p.text-about.text-center !{h.careers[1]}
+          br
+          br
+          br
+        .col-lg-3
   //- Div for Open Positions
-  .container
+  .container(id="positions")
     .row
       .col-lg-12.text-center
+        br
         h2 Open Positions
         br
         br
@@ -44,10 +63,13 @@ block content
     .row
       .col-lg-2
       .col-lg-8.text-center
-        each job in h.jobs
+        if jobs.length < 1
+          .alert.alert-danger(role="alert")
+            span We currently do not have any Open Position.
+        each job in jobs
           +jobCard(job)
       .col-lg-2
     br
     br
     br
-block footer
+

@@ -3,5 +3,17 @@ extends layout
 include mixins/_navigationCard
 
 block content
-  +navigationCard(title)
+  +navigationCard()
+  .container
+    .row
+      .col-lg-12
+        .card
+          .card-body
+            .row
+              .col-lg-12.text-center
+                h1 #{title}
+                p.text-about.text-justify.text-center FAQ HERE
+                br
+    .row
+      br
 block footer

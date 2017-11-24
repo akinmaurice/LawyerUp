@@ -22,6 +22,7 @@ require('./models/User');
 require('./models/Lawyer');
 require('./models/Request');
 require('./models/Appointment');
+require('./models/Job');
 
 //import passport helper files
 require ('./handlers/passport');
