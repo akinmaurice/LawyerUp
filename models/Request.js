@@ -9,6 +9,14 @@ const requestSchema = new mongoose.Schema({
         ref: 'User',
         required: 'A Message Request Should have a valid User!'
     },
+    name: {
+        type: String,
+        required: 'Please Provide a valid Name'
+    },
+    email: {
+        type: String,
+        required: 'Please Provide a valid Email Address'
+    },
     phone: {
         type: String,
         required: 'Please supply a valid Phone Number'
