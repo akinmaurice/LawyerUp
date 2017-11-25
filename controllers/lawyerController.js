@@ -105,11 +105,16 @@ exports.getLawyerBySlug = async (req, res) => {
 }
 
 //controller to contact lawyer get the form
-exports.getContactLawyerForm= async (req, res) => {
+exports.getContactLawyerForm = async (req, res) => {
     const lawyer = await Lawyer.findOne({ slug: req.params.slug });
     if (!lawyer) {
         res.redirect('/error'); //Send them to 404 page!
         return;
     }
     res.render('contactLawyer', { title: `Contact ${lawyer.name}`, lawyer });
+}
+
+// Controller get Lawyer login
+exports.getLogin = (req, res) => {
+    res.redirect('http://localhost:6969');
 }

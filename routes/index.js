@@ -171,4 +171,8 @@ router.post('/contact-lawyer/:slug',
 
 //Router to Get Careers Page
 router.get('/career', catchErrors(appController.careers));
+
+//ROUTER FOR LAWYER SIGN IN
+router.get('/lawyer/login', lawyerController.getLogin);
+
 module.exports = router;

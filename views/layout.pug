@@ -17,7 +17,9 @@ html(lang="en")
   body.text-justify
     nav.navbar.navbar-expand-lg.navbar-dark.bg-inverse.fixed-top
       .container-fluid
-        a(href="/").navbar-brand #{h.siteName}
+        a(href="/").navbar-brand
+          i.fa.fa-gavel.nav-gavel &nbsp;&nbsp;
+          span #{h.siteName}
         button(type="button" data-toggle="collapse" data-target="#navbarCollapse"  aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation").navbar-toggler.navbar-toggler-right
           span.navbar-toggler-icon
         .collapse.navbar-collapse(id="navbarCollapse")
@@ -60,7 +62,7 @@ html(lang="en")
         .container
           .row
             .col-lg-3.col-md-3.col-sm-3.col-xs-12
-              h6 ABOUT
+              h4 ABOUT
               ul.list-unstyled
                 li
                   a(href="/about") About Us
@@ -72,7 +74,7 @@ html(lang="en")
                   a(href="#") Blog
                 li &nbsp;
             .col-lg-3.col-md-3.col-sm-3.col-xs-12
-              h6 SERVICES
+              h4 SERVICES
               ul.list-unstyled
                 li
                   a(href="/agreement") DIY Agreements
@@ -80,7 +82,7 @@ html(lang="en")
                   a(href="/appointment") Make and Appointment
                 li &nbsp;
             .col-lg-3.col-md-3.col-sm-3.col-xs-12
-              h6 LEGAL
+              h4 LEGAL
               ul.list-unstyled
                 li
                   a(href="/terms") Terms
@@ -90,10 +92,12 @@ html(lang="en")
                   a(href="/disclaimer") Disclaimer
                 li &nbsp;
             .col-lg-3.col-md-3.col-sm-3.col-xs-12
-              h6 QUICK LINKS
+              h4 QUICK LINKS
               ul.list-unstyled
                 li
                   a(href="/directory") Lawyer Directory
+                li
+                  a(href="/lawyer/login") Lawyer Sign In
                 li
                   a(href="/join-us") Lawyer Sign Up
                 li
