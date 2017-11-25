@@ -45,7 +45,16 @@ exports.checkLawyerExists = async (req, res, next) => {
 
 //Controller to Create Lawyer
 exports.createLawyer = async (req, res) => {
-    const lawyer = new Lawyer({ email: req.body.email, name: req.body.name, tags: req.body.tags });
+    const lawyer = new Lawyer({
+        email: req.body.email,
+        name: req.body.name,
+        tags: req.body.tags,
+        rate: req.body.rate,
+        about: req.body.about,
+        gender: req.body.gender,
+        barYear: req.body.barYear,
+        location: req.body.location
+    });
     const registerWithPromise = promisify(Lawyer.register, Lawyer);
     await registerWithPromise(lawyer, req.body.password);
     res.redirect('/');

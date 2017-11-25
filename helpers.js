@@ -22,15 +22,17 @@ exports.tags = ['Civil Litigation', 'Corporate Law', 'Labour and Services',
   'Divorce and Alimony', 'Property and Real Estate', 'Criminal Defense',
   'Debt Recovery', 'Transactional Law', 'Immigration', 'Employment', 'Public Interest', 'Dispute Resolution'];
 
+
 //CONTACT METHOD
 exports.contactMethod = ['Phone Call', 'Email', 'Schedule a Meeting with a Lawyer'];
 
-//CONTACT METHOD
+//LOCATION
 exports.location = ['Abia', 'Abuja', 'Adamawa', 'Akwa Ibom', 'Anambra', 'Bauchi',
   'Bayelsa', 'Benue', 'Borno', 'Cross River', 'Delta', 'Ebonyi', 'Edo', 'Ekiti', 'Enugu',
   'Gombe', 'Imo', 'Jigawa', 'Kaduna', 'Kano', 'Katsina', 'Kebbi', 'Kogi', 'Kwara', 'Lagos',
   'Nassarawa', 'Niger', 'Ogun', 'Ondo', 'Osun', 'Oyo', 'Plateau', 'Rivers', 'Sokoto',
   'Taraba', 'Yobe', 'Zamfara'];
+
 
 // Dump is a handy debugging function we can use to sort of "console.log" our data
 exports.dump = (obj) => JSON.stringify(obj, null, 2);
@@ -64,6 +66,12 @@ exports.careers = ['We’re a team of energetic, talented professionals looking 
                     'We work hard and play harder. We strive to deliver an experience that’s unique.&nbsp;'
                     +'And above all, we respect our customers through a high quality and transparent product and service offering.'
                   ];
+
+//BAR YEARS
+exports.years = ['1990', '1991', '1992'];
+
+//GENDER OPTIONS
+exports.gender = ['Male', 'Female'];
 
 // App Title
 exports.siteName = `Lawyerup`;

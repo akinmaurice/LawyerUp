@@ -6,7 +6,6 @@ const slug = require('slugs');
 const validator = require('validator');
 const mongodbErrorHandler = require('mongoose-mongodb-errors');
 const passportLocalMongoose = require('passport-local-mongoose');
-const textAbout = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
 
 const lawyerSchema = new Schema({
     email: {
@@ -29,19 +28,25 @@ const lawyerSchema = new Schema({
     },
     rate: {
         type: Number,
-        default: 1000
+        required: 'Rate Field cannot be empty'
     },
     about: {
         type: String,
-        default: textAbout
+        required: 'About field cannot be empty!'
+    },
+    gender: {
+        type: String,
+        required: 'Please Provide a valid Gender'
+    },
+    barYear: {
+        type: Date,
     },
     linkedin: {
         type: String,
     },
     location: {
         type: String,
-        required: true,
-        default: 'Lagos'
+        required: true
     },
     tags: [String],
     resetPasswordToken: String,

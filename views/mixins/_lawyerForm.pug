@@ -1,25 +1,58 @@
 mixin lawyerForm()
   form.form-lawyer(method="POST")
-    .form-group
-      input(type="text" name="name" placeholder="Full Name").form-control.form-control-lg
-    .form-group
-      input(type="email" name="email" placeholder="Email Address").form-control.form-control-lg
-    .form-group
-      input(type="password" name="password" placeholder="Password").form-control.form-control-lg
-    .form-group
-      input(type="password" name="password-confirm" placeholder="Confirm Password").form-control.form-control-lg
-    .form-group
-      select(name="location" id="location").form-control.form-control-lg
-        option(disabled selected) Please Select Your Location
-        each location in h.location
-          option(value=`${location}`) #{location}
+    //- NAME AND EMAIL DIV
+    .row
+      .col-lg-6.col-md-6.col-sm-12
+        .form-group
+          input(type="text" name="name" placeholder="Full Name").form-control.form-control-lg
+      .col-lg-6.col-md-6.col-sm-12
+        .form-group
+          input(type="email" name="email" placeholder="Email Address").form-control.form-control-lg
+    //- RATE PER HOUR AND LOCATION
+    .row
+      .col-lg-6.col-md-6.col-sm-12
+        .form-group
+          input(type="text" name="rate" placeholder="Rate in Naira Per Hour").form-control.form-control-lg
+      .col-lg-6.col-md-6.col-sm-12
+        .form-group
+          select(name="location" id="location").form-control.form-control-lg
+            option(disabled selected) Please Select Your Location
+            each location in h.location
+              option(value=`${location}`) #{location}
+    //- YEAR ADMITTED TO THE BAR AND GENDER DIV
+    .row
+      .col-lg-6.col-md-6.col-sm-12
+        .form-group
+          select(name="gender" id="gender").form-control.form-control-lg
+            option(disabled selected) Please Select Gender
+            each gender in h.gender
+              option(value=`${gender}`) #{gender}
+      .col-lg-6.col-md-6.col-sm-12
+        .form-group
+          select(name="barYear" id="barYear").form-control.form-control-lg
+            option(disabled selected) Please Select Year Admitted to the Bar
+            each year in h.years
+              option(value=`${year}`) #{year}
+    //- ROW FOR PASSWORD AND CONFIRM PASSWORD
+    .row
+      .col-lg-6.col-md-6.col-sm-12
+        .form-group
+          input(type="password" name="password" placeholder="Password").form-control.form-control-lg
+      .col-lg-6.col-md-6.col-sm-12
+        .form-group
+          input(type="password" name="password-confirm" placeholder="Confirm Password").form-control.form-control-lg
+    .row
+      .col-lg-6.col-md-6.col-sm-12
+        .form-group
+          textarea(name="about" rows="9" placeholder="About You").form-control.form-control-lg
+
     .form-group.text-left
       each choice in h.tags
         .form-check.form-check-inline
           label.form-check-label(for="choice") #{choice}&nbsp;
             input(type="checkbox" id="choice" name="tags" value=choice)
     .form-group
-      button.btn.btn-primary.btn-lg.btn-block(type="submit") Create Account
+      button.btn.btn-primary.btn-lg(type="submit") Create Account
     .form-group
       p By Signing up you agree to the&nbsp;
         a(href="/terms") Terms and Conditions

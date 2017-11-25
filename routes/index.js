@@ -86,7 +86,7 @@ router.get('/join-us', lawyerController.registerLawyer);
 router.post('/join-us',
     lawyerController.validateLawyer,
     lawyerController.checkLawyerExists,
-    lawyerController.createLawyer
+    catchErrors(lawyerController.createLawyer)
 );
 
 /* Route to get lawyers by tag */
