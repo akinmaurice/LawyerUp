@@ -3,6 +3,7 @@ const User = mongoose.model('User');
 const promisify = require('es6-promisify');
 const mail = require('../handlers/mail');
 const pug = require('pug');
+const crypto = require('crypto');
 
 //Controller to get login page
 exports.getLogin = (req, res) => {
@@ -37,7 +38,7 @@ exports.validateRegister = (req, res, next) => {
 }
 
 //Middleware to check if user exists already
-exports.checkUserExists = async (req, res, next) => {
+exports.checkUserExists = async(req, res, next) => {
     const user = await User.find({ email: req.body.email });
     if (user.length) {
         console.log('User Exists');
@@ -50,11 +51,21 @@ exports.checkUserExists = async (req, res, next) => {
 }
 
 //Middle ware Controller to regsiter user
-exports.registerUser = async (req, res) => {
-    const user = new User({ email: req.body.email, name: req.body.name });
+exports.registerUser = async(req, res) => {
+    //GENERATE TOKEN AND SET TIME TO Activate Account
+    req.body.resetPasswordToken = crypto.randomBytes(20).toString('hex');
+    //SET TIME EXPIRES AS ONE HOUR FROM NOW
+    req.body.resetPasswordExpires = Date.now() + 3600000;
+    const user = new User({
+        email: req.body.email,
+        name: req.body.name,
+        resetPasswordExpires: req.body.resetPasswordExpires,
+        resetPasswordToken: req.body.resetPasswordToken
+    });
     const registerWithPromise = promisify(User.register, User);
     await registerWithPromise(user, req.body.password);
-    pug.renderFile('./views/email/registerMail.pug', { mail: req.body.email, activationLink: 'activationLink' }, function (err, data) {
+    const activationLink = `http://${req.headers.host}/user/activate/${user.resetPasswordToken}`;
+    pug.renderFile('./views/email/registerMail.pug', { mail: req.body.email, activationLink }, function(err, data) {
         if (err) {
             console.log(err);
             res.redirect('back');
@@ -70,21 +81,32 @@ exports.registerUser = async (req, res) => {
     });
 }
 
+//ACTIVATE USER ACCOUNT
+exports.activate = async(req, res) => {
+    const user = await User.findOne({
+        resetPasswordToken: req.params.token,
+        resetPasswordExpires: { $gt: Date.now() }
+    });
+    if (!user) {
+        req.flash('danger', 'Activation Token Invalid or has expired! Kindly reset your password to confirm')
+        res.redirect('/login');
+    } else {
+        req.flash('success', 'Account Activated!')
+        res.redirect('/login');
+    }
+}
+
 //GET USER EDIT ACCOUNT PAGE
 exports.editAccount = (req, res) => {
-    res.render('editUser', {title: 'Edit My Account'});
+    res.render('editUser', { title: 'Edit My Account' });
 }
 
 //Controller to update user account
-exports.updateAccount = async (req, res) => {
+exports.updateAccount = async(req, res) => {
     const updates = {
         name: req.body.name
     };
-    const user = await User.findOneAndUpdate(
-        { _id: req.user._id },
-        { $set: updates },
-        { new: true, runValidators: true, context: 'query' }
-    );
+    const user = await User.findOneAndUpdate({ _id: req.user._id }, { $set: updates }, { new: true, runValidators: true, context: 'query' });
     req.flash('success', 'Updated Profile!');
     res.redirect('back');
 }

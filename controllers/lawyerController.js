@@ -3,6 +3,7 @@ const Lawyer = mongoose.model('Lawyer');
 const promisify = require('es6-promisify');
 const mail = require('../handlers/mail');
 const pug = require('pug');
+const crypto = require('crypto');
 
 //Controller to get lawyer Registration Page
 exports.registerLawyer = (req, res) => {
@@ -18,13 +19,16 @@ exports.validateLawyer = (req, res, next) => {
         remove_extension: false,
         gmail_remove_subaddress: false
     });
-    req.checkBody('password', 'Password cannot be Blank!').notEmpty();
-    req.checkBody('password-confirm', 'COnfirm Password cannot be empty!').notEmpty();
-    req.checkBody('password-confirm', 'Your Passwords do not match').equals(req.body.password);
+    req.checkBody('rate', 'Rate cannot be Blank!').notEmpty();
+    req.checkBody('location', 'Please select a valid location!').notEmpty();
+    req.checkBody('gender', 'Please select a valid gender!').notEmpty();
+    req.checkBody('barYear', 'Please select a valid bar year!').notEmpty();
+    req.checkBody('about', 'About cannot be Blank!').notEmpty();
+    req.checkBody('tags', 'Please select at least one of the tags!').notEmpty();
     const errors = req.validationErrors();
     if (errors) {
         req.flash('danger', errors.map(err => err.msg));
-        res.render('lawyerSignUp', { title: 'Lawyer Sign Up', body: req.body, flashes: req.flash() });
+        res.redirect('/join-us');
         //STop fn from running
         return;
     }
@@ -32,7 +36,7 @@ exports.validateLawyer = (req, res, next) => {
 }
 
 //Middleware to check if lawyer exists already
-exports.checkLawyerExists = async (req, res, next) => {
+exports.checkLawyerExists = async(req, res, next) => {
     const lawyer = await Lawyer.find({ email: req.body.email });
     if (lawyer.length) {
         //STop fn from running
@@ -44,7 +48,11 @@ exports.checkLawyerExists = async (req, res, next) => {
 }
 
 //Controller to Create Lawyer
-exports.createLawyer = async (req, res) => {
+exports.createLawyer = async(req, res) => {
+    //GENERATE TOKEN AND SET TIME TO Activate Account
+    req.body.resetPasswordToken = crypto.randomBytes(20).toString('hex');
+    //SET TIME EXPIRES AS ONE HOUR FROM NOW
+    req.body.resetPasswordExpires = Date.now() + 3600000;
     const lawyer = new Lawyer({
         email: req.body.email,
         name: req.body.name,
@@ -53,15 +61,31 @@ exports.createLawyer = async (req, res) => {
         about: req.body.about,
         gender: req.body.gender,
         barYear: req.body.barYear,
-        location: req.body.location
+        location: req.body.location,
+        resetPasswordExpires: req.body.resetPasswordExpires,
+        resetPasswordToken: req.body.resetPasswordToken
     });
     const registerWithPromise = promisify(Lawyer.register, Lawyer);
     await registerWithPromise(lawyer, req.body.password);
-    res.redirect('/');
+    const activationLink = `http://${req.headers.host}/lawyer/activate/${lawyer.resetPasswordToken}`;
+    pug.renderFile('./views/email/registerMail.pug', { mail: req.body.email, activationLink }, function(err, data) {
+        if (err) {
+            console.log(err);
+            res.redirect('back');
+        } else {
+            mail.send({
+                user: req.body.email,
+                subject: 'Complete Account Resgistration',
+                data: data
+            });
+            req.flash('success', 'Account Successfully created. Please activate your account using the link sent to your mail');
+            res.redirect('/join-us');
+        }
+    });
 }
 
 //Controller to Find ALL Lawyers
-exports.getLawyers = async (req, res) => {
+exports.getLawyers = async(req, res) => {
     //CHeck page number from the params sent in the url or set to 1
     const page = req.params.page || 1;
     //SET LIMIT OF number of Lawyers to return
@@ -81,7 +105,7 @@ exports.getLawyers = async (req, res) => {
 }
 
 //Controller to get lawyers by tags
-exports.getLawyersByTags = async (req, res) => {
+exports.getLawyersByTags = async(req, res) => {
     //CHeck page number from the params sent in the url or set to 1
     const page = req.params.page || 1;
     //SET LIMIT OF number of Lawyers to return
@@ -104,7 +128,7 @@ exports.getLawyersByTags = async (req, res) => {
 }
 
 //CONTROLLER TO GET LAWYER BY SLUG
-exports.getLawyerBySlug = async (req, res) => {
+exports.getLawyerBySlug = async(req, res) => {
     const lawyer = await Lawyer.findOne({ slug: req.params.slug });
     if (!lawyer) {
         res.redirect('/error'); //Send them to 404 page!
@@ -114,7 +138,7 @@ exports.getLawyerBySlug = async (req, res) => {
 }
 
 //controller to contact lawyer get the form
-exports.getContactLawyerForm = async (req, res) => {
+exports.getContactLawyerForm = async(req, res) => {
     const lawyer = await Lawyer.findOne({ slug: req.params.slug });
     if (!lawyer) {
         res.redirect('/error'); //Send them to 404 page!
@@ -126,4 +150,21 @@ exports.getContactLawyerForm = async (req, res) => {
 // Controller get Lawyer login
 exports.getLogin = (req, res) => {
     res.redirect('http://localhost:6969');
+}
+
+//ACTIVATE LAWYER ACCOUNT
+exports.activate = async(req, res) => {
+    const lawyer = await Lawyer.findOne({
+        resetPasswordToken: req.params.token,
+        resetPasswordExpires: { $gt: Date.now() }
+    });
+    if (!lawyer) {
+        req.flash('danger', 'Activation Token Invalid or has expired! Kindly reset your password to confirm')
+            //redirect to login page for lawyers here
+        res.redirect('/login');
+    } else {
+        req.flash('success', 'Account Activated!')
+            //redirect to login page for lawyers
+        res.redirect('/login');
+    }
 }

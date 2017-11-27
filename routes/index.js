@@ -175,4 +175,14 @@ router.get('/career', catchErrors(appController.careers));
 //ROUTER FOR LAWYER SIGN IN
 router.get('/lawyer/login', lawyerController.getLogin);
 
+//ROUTER TO ACTIVATE USER ACCOUNT
+router.get('/user/activate/:token',
+    catchErrors(userController.activate)
+)
+
+//ROUTER TO ACTIVATE Lawyer ACCOUNT
+router.get('/lawyer/activate/:token',
+    catchErrors(lawyerController.activate)
+)
+
 module.exports = router;
