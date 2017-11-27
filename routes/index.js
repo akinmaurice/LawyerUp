@@ -120,7 +120,7 @@ router.get('/legal-advice',
 router.post('/engage',
     authController.isLoggedIn,
     appController.verifyRequest,
-    appController.requestLawyer
+    catchErrors(appController.requestLawyer)
 );
 
 //ROUTE TO GET EDIT USER PAGE

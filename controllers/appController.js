@@ -102,7 +102,7 @@ exports.verifyRequest = (req, res, next) => {
 }
 
 //CONTROLLER TO SEND ENGAGE LAWYER AND REQUEST FOR ADVICE
-exports.requestLawyer = async (req, res) => {
+exports.requestLawyer = async(req, res) => {
     req.body.author = req.user._id;
     const request = await (new Request(req.body)).save();
     //SEND MAIL TO THE USER WITH THE REQUEST HERE
@@ -114,7 +114,7 @@ exports.requestLawyer = async (req, res) => {
         legalService: req.body.legalService,
         location: req.body.location,
         phone: req.body.phone
-    }, function (err, data) {
+    }, function(err, data) {
         if (err) {
             console.log(err);
             req.flash('success', 'Message Submitted. We will contact you shortly');
@@ -129,11 +129,10 @@ exports.requestLawyer = async (req, res) => {
             res.redirect('back');
         }
     });
-    //res.json(req.body);
 }
 
 //Controller to get careers page
 exports.careers = async(req, res) => {
     const jobs = await Job.find();
-    res.render('career', {title: 'Careers', jobs});
+    res.render('career', { title: 'Careers', jobs });
 }

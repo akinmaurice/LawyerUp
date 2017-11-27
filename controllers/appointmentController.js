@@ -25,9 +25,30 @@ exports.validateInput = (req, res, next) => {
 }
 
 //controller to contact lawyer
-exports.createAppointment = async (req, res) => {
+exports.createAppointment = async(req, res) => {
     req.body.author = req.user._id;
     const appointment = await (new Appointment(req.body)).save();
-    req.flash('success', 'A message has been Sent. we will contact you shortly');
-    res.redirect(`/attorney/${req.params.slug}`);
+    //SEND MAIL TO THE USER WITH THE REQUEST HERE
+    pug.renderFile('./views/email/lawyerContact.pug', {
+        //Lawyer EMail Address
+        mail: req.body.lawyerEmail,
+        name: req.body.name,
+        email: req.body.email,
+        phone: req.body.phone
+    }, function(err, data) {
+        if (err) {
+            console.log(err);
+            req.flash('success', 'Message Submitted. We will contact you shortly');
+            res.redirect('back');
+        } else {
+            mail.send({
+                user: req.body.email,
+                subject: 'Lawyerup Request',
+                data: data
+            });
+            req.flash('success', 'A message has been Sent. we will contact you shortly');
+            res.redirect(`/attorney/${req.params.slug}`);
+        }
+    });
+
 }

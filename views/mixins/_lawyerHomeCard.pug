@@ -17,6 +17,7 @@ mixin lawyerHomeCard(lawyer = {})
                     .col-lg-6.col-md-6.col-sm-12
                       .form-group
                         input(type="hidden" name="lawyer" value=`${lawyer._id}`)
+                        input(type="hidden" name="lawyerEmail" value=`${lawyer.email}`)
                         input(type="text" name="name" id="name" placeholder="Full Name" value=`${user.name}`).form-control.form-control-lg
                     .col-lg-6.col-md-6.col-sm-12
                       .form-group

@@ -1,0 +1,35 @@
+doctype html
+html
+
+head
+  meta(name="viewport" content="width=device-width")
+  meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
+  style
+    include styles.css
+body
+  table.body(border="0" cellpadding="0" cellspacing="0")
+    tr
+      td &nbsp;
+      td.container
+        .content
+          span.preheader #{subject}
+          table.main
+            tr
+              td.wrapper
+                table(border="0" cellpadding="0" cellspacing="0")
+                  tr
+                    td
+                      p Hi #{mail}
+                      br
+                      p You have been contacted by the user below. You can reach them on the email and phone number below.
+                      p #{name}
+                      p #{phone}
+                      p #{email}
+            .footer
+              table(border="0" cellpadding="0" cellspacing="0")
+                tr
+                  td.content-block
+                    span.apple-link Company Address Here
+                    br
+                    p Unsubscribe
+      td &nbsp;
