@@ -163,6 +163,10 @@ exports.activate = async(req, res) => {
             //redirect to login page for lawyers here
         res.redirect('/login');
     } else {
+        const updates = {
+            status: true
+        };
+        const lawyerActivate = await Lawyer.findOneAndUpdate({ _id: lawyer._id }, { $set: updates }, { new: true, runValidators: true, context: 'query' });
         req.flash('success', 'Account Activated!')
             //redirect to login page for lawyers
         res.redirect('/login');

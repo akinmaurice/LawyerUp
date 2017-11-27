@@ -53,7 +53,10 @@ router.get('/directory/page/:page',
 router.get('/login', userController.getLogin);
 
 /* Login User. */
-router.post('/login', authController.login);
+router.post('/login',
+    catchErrors(authController.checkUserStatus),
+    authController.login
+);
 
 /* Logout User. */
 router.get('/logout', authController.logout);

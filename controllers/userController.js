@@ -91,6 +91,10 @@ exports.activate = async(req, res) => {
         req.flash('danger', 'Activation Token Invalid or has expired! Kindly reset your password to confirm')
         res.redirect('/login');
     } else {
+        const updates = {
+            status: true
+        };
+        const userActivate = await User.findOneAndUpdate({ _id: user._id }, { $set: updates }, { new: true, runValidators: true, context: 'query' });
         req.flash('success', 'Account Activated!')
         res.redirect('/login');
     }

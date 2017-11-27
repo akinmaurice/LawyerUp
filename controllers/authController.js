@@ -6,6 +6,26 @@ const crypto = require('crypto');
 const mail = require('../handlers/mail');
 const pug = require('pug');
 
+
+//MIDDLE WARE TO CHECK IF THE USER STATUS IS ACTIVE BEFORE ALLOWING THEM LOGIN
+exports.checkUserStatus = async(req, res, next) => {
+    const user = await User.findOne({ email: req.body.email });
+    //Check if the User Exists!
+    if (!user) {
+        req.flash('danger', 'No User with that email found')
+        res.redirect('/login');
+        //STop fn from running
+        return;
+        //Check if the User Status is Active
+    } else if (user.status === false) {
+        req.flash('danger', 'Your Account has not been activated yet. please use the link sent to your email or reset your password to get another link!')
+        res.redirect('/login');
+        //STop fn from running
+        return;
+    }
+    next();
+}
+
 //Login Controller
 exports.login = passport.authenticate('local', {
     failureRedirect: '/login',
@@ -37,7 +57,7 @@ exports.editPassword = (req, res) => {
 }
 
 //Controller to update user account
-exports.updatePassword = async (req, res) => {
+exports.updatePassword = async(req, res) => {
     const user = await User.findOne({
 
     });
@@ -49,13 +69,12 @@ exports.getForgot = (req, res) => {
 }
 
 //Controller to reset Password user
-exports.forgot = async (req, res) => {
+exports.forgot = async(req, res) => {
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
         req.flash('success', 'Reset Link Sent');
         res.render('login', { title: 'Sign In', flashes: req.flash() });
-    }
-    else {
+    } else {
         //GENERATE TOKEN AND SET TIME TO RESET PASSWORD
         user.resetPasswordToken = crypto.randomBytes(20).toString('hex');
         //SET TIME EXPIRES AS ONE HOUR FROM NOW
@@ -63,7 +82,7 @@ exports.forgot = async (req, res) => {
         await user.save();
         //Send Mail to the user with a token to reset the account
         const resetUrl = `http://${req.headers.host}/user/reset/${user.resetPasswordToken}`;
-        pug.renderFile(`${__dirname}/../views/email/resetMail.pug`, { mail: req.body.email, resetLink: resetUrl }, function (err, data) {
+        pug.renderFile(`${__dirname}/../views/email/resetMail.pug`, { mail: req.body.email, resetLink: resetUrl }, function(err, data) {
             if (err) {
                 req.flash('success', 'Reset Link Sent');
                 res.render('login', { title: 'Sign In', flashes: req.flash() });
@@ -83,7 +102,7 @@ exports.forgot = async (req, res) => {
 }
 
 //Controller to Reset
-exports.reset = async (req, res) => {
+exports.reset = async(req, res) => {
     const user = await User.findOne({
         resetPasswordToken: req.params.token,
         resetPasswordExpires: { $gt: Date.now() }
@@ -91,8 +110,7 @@ exports.reset = async (req, res) => {
     if (!user) {
         req.flash('danger', 'Password reset Invalid or has expired!')
         res.redirect('/login');
-    }
-    else {
+    } else {
         res.render('reset', { title: 'Reset Password' });
     }
 }
@@ -100,17 +118,16 @@ exports.reset = async (req, res) => {
 //MIDDLEWARE TO CHECK IF PASSWORDS MATCH FOR RESET
 exports.confirmedPasswords = (req, res, next) => {
     if (req.body.password === req.body.passwordConfirm) {
-        next();//MOVE TO THE NEXT FUNCTION
+        next(); //MOVE TO THE NEXT FUNCTION
         return;
-    }
-    else {
+    } else {
         req.flash('danger', 'Passwords Do not Match!');
         res.redirect('back');
     }
 }
 
 //UPDATE PASSWORD RESET
-exports.update = async (req, res) => {
+exports.update = async(req, res) => {
     const user = await User.findOne({
         resetPasswordToken: req.params.token,
         resetPasswordExpires: { $gt: Date.now() }

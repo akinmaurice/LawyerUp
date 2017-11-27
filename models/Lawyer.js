@@ -48,19 +48,24 @@ const lawyerSchema = new Schema({
         type: String,
         required: true
     },
+    status: {
+        type: Boolean,
+        default: false,
+        required: true
+    },
     tags: [String],
     resetPasswordToken: String,
     resetPasswordExpires: Date
 });
 
-lawyerSchema.virtual('gravatar').get(function () {
+lawyerSchema.virtual('gravatar').get(function() {
     const hash = md5(this.email);
     return `https://gravatar.com/avatar/${hash}?s=200`;
 });
 
 /*Auto generate slugs and pre-save before someone saves a post in the schema.
 not needed for new post only stores with changed title*/
-lawyerSchema.pre('save', async function (next) {
+lawyerSchema.pre('save', async function(next) {
     if (!this.isModified('name')) {
         next(); // Skip
         return; // stop this this function back to save
@@ -79,7 +84,7 @@ lawyerSchema.pre('save', async function (next) {
 });
 
 //Model to get the tag list
-lawyerSchema.statics.getTagsList = function () {
+lawyerSchema.statics.getTagsList = function() {
     return this.aggregate([
         { $unwind: '$tags' },
         { $group: { _id: '$tags', count: { $sum: 1 } } },
