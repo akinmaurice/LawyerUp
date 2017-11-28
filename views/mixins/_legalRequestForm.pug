@@ -15,7 +15,7 @@ mixin legalRequestForm()
           .col-lg-6.col-md-6.col-sm-12
             .form-group
               label(for="phone").labelContact Phone
-              input(type="phone" name="phone" id="phone" placeholder="Phone Number" value=`${user.phone || ''}`).form-control.form-control-lg
+              input(type="phone" name="phone" id="phone" placeholder="Phone Number" value=`${phone  || ''}`).form-control.form-control-lg
           .col-lg-6.col-md-6.col-sm-12
             .form-group
               label(for="contactMethod").labelContact Prefered method to contact you
@@ -42,7 +42,7 @@ mixin legalRequestForm()
           .col-lg-6.col-md-6.col-sm-12
             .form-group
               label(for="message").labelContact Legal Request
-              textarea(rows="10" name="message" id="message" placeholder="Details about your legal request").form-control
+              textarea(rows="10" name="message" id="message" placeholder="Details about your legal request").form-control #{message || ''}
         .row
           .col-lg-6.col-md-6.col-sm-12
             .form-group.text-center

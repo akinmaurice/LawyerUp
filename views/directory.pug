@@ -3,6 +3,7 @@ extends layout
 include mixins/_navigationCard
 include mixins/_lawyerCard
 include mixins/_directoryPagination
+include mixins/_tagNav
 
 block content
   +navigationCard(title)
@@ -13,4 +14,12 @@ block content
           each lawyer in lawyers
             +lawyerCard(lawyer)
           +pagination(page, pages, count)
+    br
+    br
+    hr
+    .row
+      .col-lg-9
+        ul.list-inline
+          each t in tags
+            +tagNav(t)
 block footer

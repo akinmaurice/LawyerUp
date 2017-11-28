@@ -10,6 +10,7 @@ exports.getLogin = (req, res) => {
     res.render('login', { title: 'Sign In' });
 }
 
+
 //Controller to get register page
 exports.getRegister = (req, res) => {
     res.render('register', { title: 'Create an Account' });
@@ -44,7 +45,7 @@ exports.checkUserExists = async(req, res, next) => {
         console.log('User Exists');
         //STop fn from running
         req.flash('danger', 'A user with that email Exists Already');
-        res.redirect('/register');
+        res.render('register', { title: 'Create an Account', body: req.body, flashes: req.flash() });
         return;
     }
     next();
@@ -67,8 +68,8 @@ exports.registerUser = async(req, res) => {
     const activationLink = `http://${req.headers.host}/user/activate/${user.resetPasswordToken}`;
     pug.renderFile('./views/email/registerMail.pug', { mail: req.body.email, activationLink }, function(err, data) {
         if (err) {
-            console.log(err);
-            res.redirect('back');
+            req.flash('success', 'Account Successfully created. Please activate your account using the link sent to your mail');
+            res.redirect('/login');
         } else {
             mail.send({
                 user: req.body.email,

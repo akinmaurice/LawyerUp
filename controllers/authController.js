@@ -6,6 +6,24 @@ const crypto = require('crypto');
 const mail = require('../handlers/mail');
 const pug = require('pug');
 
+//MIDDLEWARE TO CHECK LOGIN FORM IF THE USER INPUT IS VALID
+exports.checkLoginFormInput = (req, res, next) => {
+    req.checkBody('email', 'Email Field Cannot be Empty').isEmail();
+    req.sanitizeBody('email').normalizeEmail({
+        remove_dots: false,
+        remove_extension: false,
+        gmail_remove_subaddress: false
+    });
+    const errors = req.validationErrors();
+    if (errors) {
+        req.flash('danger', errors.map(err => err.msg));
+        res.render('login', { title: 'Sign In', email: req.body.email, flashes: req.flash() });
+        //STop fn from running
+        return;
+    }
+    next();
+}
+
 
 //MIDDLE WARE TO CHECK IF THE USER STATUS IS ACTIVE BEFORE ALLOWING THEM LOGIN
 exports.checkUserStatus = async(req, res, next) => {
@@ -13,13 +31,13 @@ exports.checkUserStatus = async(req, res, next) => {
     //Check if the User Exists!
     if (!user) {
         req.flash('danger', 'No User with that email found')
-        res.redirect('/login');
+        res.render('login', { title: 'Sign In', email: req.body.email, flashes: req.flash() });
         //STop fn from running
         return;
         //Check if the User Status is Active
     } else if (user.status === false) {
         req.flash('danger', 'Your Account has not been activated yet. please use the link sent to your email or reset your password to get another link!')
-        res.redirect('/login');
+        res.render('login', { title: 'Sign In', email: req.body.email, flashes: req.flash() });
         //STop fn from running
         return;
     }

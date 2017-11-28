@@ -54,6 +54,7 @@ router.get('/login', userController.getLogin);
 
 /* Login User. */
 router.post('/login',
+    authController.checkLoginFormInput,
     catchErrors(authController.checkUserStatus),
     authController.login
 );

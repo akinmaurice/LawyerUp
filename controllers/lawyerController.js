@@ -4,6 +4,7 @@ const promisify = require('es6-promisify');
 const mail = require('../handlers/mail');
 const pug = require('pug');
 const crypto = require('crypto');
+const moment = require('moment');
 
 //Controller to get lawyer Registration Page
 exports.registerLawyer = (req, res) => {
@@ -27,8 +28,12 @@ exports.validateLawyer = (req, res, next) => {
     req.checkBody('tags', 'Please select at least one of the tags!').notEmpty();
     const errors = req.validationErrors();
     if (errors) {
+        const email = req.body.email;
+        const name = req.body.name;
+        const rate = req.body.rate;
+        const about = req.body.about;
         req.flash('danger', errors.map(err => err.msg));
-        res.redirect('/join-us');
+        res.render('lawyerSignUp', { title: 'Lawyer Sign Up', email, name, rate, about, flashes: req.flash() });
         //STop fn from running
         return;
     }
@@ -53,6 +58,11 @@ exports.createLawyer = async(req, res) => {
     req.body.resetPasswordToken = crypto.randomBytes(20).toString('hex');
     //SET TIME EXPIRES AS ONE HOUR FROM NOW
     req.body.resetPasswordExpires = Date.now() + 3600000;
+    //GET THE DATE SUPPLIED BY USER AND CONVERT TO DATE FUNCTION
+    const dateString = req.body.barYear;
+    const dateObj = new Date(dateString);
+    const momentObj = moment(dateObj);
+    const momentDate = momentObj.format('YYYY-MM-DD');
     const lawyer = new Lawyer({
         email: req.body.email,
         name: req.body.name,
@@ -60,7 +70,7 @@ exports.createLawyer = async(req, res) => {
         rate: req.body.rate,
         about: req.body.about,
         gender: req.body.gender,
-        barYear: req.body.barYear,
+        barYear: momentDate,
         location: req.body.location,
         resetPasswordExpires: req.body.resetPasswordExpires,
         resetPasswordToken: req.body.resetPasswordToken
@@ -70,8 +80,8 @@ exports.createLawyer = async(req, res) => {
     const activationLink = `http://${req.headers.host}/lawyer/activate/${lawyer.resetPasswordToken}`;
     pug.renderFile('./views/email/registerMail.pug', { mail: req.body.email, activationLink }, function(err, data) {
         if (err) {
-            console.log(err);
-            res.redirect('back');
+            req.flash('success', 'Account Successfully created. Please activate your account using the link sent to your mail');
+            res.redirect('/join-us');
         } else {
             mail.send({
                 user: req.body.email,
@@ -92,15 +102,18 @@ exports.getLawyers = async(req, res) => {
     const limit = 7;
     //SET THE NUMBER OF Lawyers TO SKIP BASED ON PAGE NUMBER
     const skip = (page * limit) - limit;
+    //CHECK FOR THE AVAILABLE TAGS
+    const tagQuery = { $exists: true };
+    const tagsPromise = await Lawyer.getTagsList();
     //Query the Database for all the Posts in the DB
     const lawyersPromise = await Lawyer.find().sort({ created: -1 }).skip(skip).limit(limit);
     const countPromise = await Lawyer.count();
-    const [lawyers, count] = await Promise.all([lawyersPromise, countPromise]);
+    const [lawyers, tags, count] = await Promise.all([lawyersPromise, tagsPromise, countPromise]);
     const pages = Math.ceil(count / limit);
     if (!lawyers.length && skip) {
         res.redirect(`/directory/page/${pages}`);
     } else {
-        res.render('directory', { title: 'Lawyer Directory', lawyers, page, pages, count })
+        res.render('directory', { title: 'Lawyer Directory', lawyers, page, pages, count, tags })
     }
 }
 
@@ -122,7 +135,7 @@ exports.getLawyersByTags = async(req, res) => {
     if (!lawyers.length && skip) {
         res.redirect(`/directory/page/${pages}`);
     } else {
-        console.log(count, page, pages)
+        console.log(count, page, pages, tags)
         res.render('tags', { tags, title: `${tag} Lawyers`, lawyers, count, page, pages, tag });
     }
 }

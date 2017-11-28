@@ -87,14 +87,17 @@ exports.verifyRequest = (req, res, next) => {
         gmail_remove_subaddress: false
     });
     req.checkBody('phone', 'Phone cannot be Blank!').notEmpty();
-    req.checkBody('message', 'Message cannot be Blank!').notEmpty();
+    req.checkBody('message', 'Legal Request cannot be Blank!').notEmpty();
     req.checkBody('contactMethod', 'Please select a Contact Method!').notEmpty();
     req.checkBody('legalService', 'Please select a Legal Service!').notEmpty();
     req.checkBody('location', 'Please select a Location!').notEmpty();
     const errors = req.validationErrors();
     if (errors) {
+        const phone = req.body.phone;
+        const message = req.body.message;
+        const contactMethod = req.body.contactMethod;
         req.flash('danger', errors.map(err => err.msg));
-        res.redirect('back');
+        res.render('engageLawyer', { title: 'Engage a Lawyer', phone, message, flashes: req.flash() });
         //STop fn from running
         return;
     }
@@ -116,7 +119,6 @@ exports.requestLawyer = async(req, res) => {
         phone: req.body.phone
     }, function(err, data) {
         if (err) {
-            console.log(err);
             req.flash('success', 'Message Submitted. We will contact you shortly');
             res.redirect('back');
         } else {

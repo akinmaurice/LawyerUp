@@ -4,15 +4,15 @@ mixin lawyerForm()
     .row
       .col-lg-6.col-md-6.col-sm-12
         .form-group
-          input(type="text" name="name" placeholder="Full Name").form-control.form-control-lg
+          input(type="text" name="name" placeholder="Full Name" value=`${ name || ''}`).form-control.form-control-lg
       .col-lg-6.col-md-6.col-sm-12
         .form-group
-          input(type="email" name="email" placeholder="Email Address").form-control.form-control-lg
+          input(type="email" name="email" placeholder="Email Address" value=`${ email || ''}`).form-control.form-control-lg
     //- RATE PER HOUR AND LOCATION
     .row
       .col-lg-6.col-md-6.col-sm-12
         .form-group
-          input(type="text" name="rate" placeholder="Rate in Naira Per Hour").form-control.form-control-lg
+          input(type="text" name="rate" placeholder="Rate in Naira Per Hour" value=`${ rate || ''}`).form-control.form-control-lg
       .col-lg-6.col-md-6.col-sm-12
         .form-group
           select(name="location" id="location").form-control.form-control-lg
@@ -44,7 +44,7 @@ mixin lawyerForm()
     .row
       .col-lg-6.col-md-6.col-sm-12
         .form-group
-          textarea(name="about" rows="9" placeholder="About You").form-control.form-control-lg
+          textarea(name="about" rows="9" placeholder="About You").form-control.form-control-lg #{ about || ''}
 
     .form-group.text-left
       each choice in h.tags

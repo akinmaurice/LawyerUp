@@ -1,9 +1,9 @@
 mixin registerUserForm()
   form.form-signin(action="/register" method="POST")
     .form-group
-      input(type="text" name="name" placeholder="Name").form-control.form-control-lg
+      input(type="text" name="name" placeholder="Name" value=`${body.name || ''}`).form-control.form-control-lg
     .form-group
-      input(type="email" name="email" placeholder="Email Address").form-control.form-control-lg
+      input(type="email" name="email" placeholder="Email Address" value=`${body.email || ''}`).form-control.form-control-lg
     .form-group
       input(type="password" name="password" placeholder="Password").form-control.form-control-lg
     .form-group

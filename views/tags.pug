@@ -3,6 +3,7 @@ extends layout
 include mixins/_navigationCard
 include mixins/_lawyerCard
 include mixins/_tagsPagination
+include mixins/_tagNav
 
 block content
   +navigationCard(title)
@@ -12,6 +13,15 @@ block content
         if lawyers.length >= 1
           each lawyer in lawyers
             +lawyerCard(lawyer)
-        br
-        br
+        else
+          .alert.alert-danger.text-center There is currently no Lawyer for this search.
+    br
+    br
+    hr
+    .row
+      .col-lg-9
+        ul.list-inline
+          each t in tags
+            +tagNav(t)
+
 block footer
