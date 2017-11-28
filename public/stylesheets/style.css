@@ -664,6 +664,12 @@ textarea {
     border-top-left-radius: 0;
 }
 
+.formContactLawyer textarea[name="message"] {
+    margin-bottom: -1px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
 .formContactLawyer button {
     margin-bottom: -1px;
     border-top-left-radius: 0;

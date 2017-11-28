@@ -21,6 +21,14 @@ const appointmentSchema = new mongoose.Schema({
         type: String,
         required: 'Please supply a valid Phone Number'
     },
+    legalService: {
+        type: String,
+        required: true
+    },
+    message: {
+        type: String,
+        required: true
+    },
     lawyer: {
         type: mongoose.Schema.ObjectId,
         ref: 'Lawyer'

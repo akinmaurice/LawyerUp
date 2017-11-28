@@ -24,7 +24,16 @@ mixin lawyerHomeCard(lawyer = {})
                         input(type="email" name="email" id="email" placeholder="Email Address" value=`${user.email}`).form-control.form-control-lg
                     .col-lg-6.col-md-6.col-sm-12
                       .form-group
-                        input(type="phone" name="phone" id="phone" placeholder="Phone Number" value=`${user.phone || ''}`).form-control.form-control-lg
+                        input(type="phone" name="phone" id="phone" placeholder="Phone Number" value=`${phone || ''}`).form-control.form-control-lg
+                    .col-lg-6.col-md-6.col-sm-12
+                      .form-group
+                        select(name="legalService" id="legalService").form-control.form-control-lg
+                          option(disabled selected) Please Select Legal Service Required
+                          each service in lawyer.tags
+                            option(value=`${service}`) #{service}
+                    .col-lg-12
+                      .form-group
+                        textarea(name="message" id="message" rows="3" placeholder="Brief details of your legal Request...").form-control.form-control-lg #{message || ''}
                   .row.text-left
                     .col-lg-12
                       button(type="submit").btn.btn-primary Contact Lawyer

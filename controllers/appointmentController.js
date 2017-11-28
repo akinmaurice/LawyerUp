@@ -14,6 +14,8 @@ exports.validateInput = (req, res, next) => {
         gmail_remove_subaddress: false
     });
     req.checkBody('phone', 'Phone cannot be Blank!').notEmpty();
+    req.checkBody('legalService', 'You must select a Legal Service!').notEmpty();
+    req.checkBody('message', 'Details of request cannot be empty!').notEmpty();
     const errors = req.validationErrors();
     if (errors) {
         req.flash('danger', errors.map(err => err.msg));
@@ -34,6 +36,8 @@ exports.createAppointment = async(req, res) => {
         lawyerName: req.body.lawyerName,
         name: req.body.name,
         email: req.body.email,
+        message: req.body.message,
+        legalService: req.body.legalService,
         phone: req.body.phone
     }, function(err, data) {
         if (err) {
