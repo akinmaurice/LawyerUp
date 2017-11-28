@@ -106,7 +106,7 @@ exports.getLawyers = async(req, res) => {
     const tagQuery = { $exists: true };
     const tagsPromise = await Lawyer.getTagsList();
     //Query the Database for all the Posts in the DB
-    const lawyersPromise = await Lawyer.find().sort({ created: -1 }).skip(skip).limit(limit);
+    const lawyersPromise = await Lawyer.find({ status: true }).sort({ created: -1 }).skip(skip).limit(limit);
     const countPromise = await Lawyer.count();
     const [lawyers, tags, count] = await Promise.all([lawyersPromise, tagsPromise, countPromise]);
     const pages = Math.ceil(count / limit);
@@ -128,7 +128,7 @@ exports.getLawyersByTags = async(req, res) => {
     const tag = req.params.tag;
     const tagQuery = tag || { $exists: true };
     const tagsPromise = await Lawyer.getTagsList();
-    const lawyersPromise = await Lawyer.find({ tags: tagQuery }).sort({ created: -1 }).skip(skip).limit(limit);
+    const lawyersPromise = await Lawyer.find({ tags: tagQuery, status: true }).sort({ created: -1 }).skip(skip).limit(limit);
     const countPromise = await Lawyer.find({ tags: tagQuery }).count();
     const [tags, lawyers, count] = await Promise.all([tagsPromise, lawyersPromise, countPromise]);
     const pages = Math.ceil(count / limit);

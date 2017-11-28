@@ -10,16 +10,15 @@ block content
   .container-fluid
     .row
       .col-lg-9
+        ul.list-inline
+          each t in tags
+            +tagNav(t)
+    .row
+      .col-lg-9
         if lawyers.length >= 1
           each lawyer in lawyers
             +lawyerCard(lawyer)
           +pagination(page, pages, count)
     br
     br
-    hr
-    .row
-      .col-lg-9
-        ul.list-inline
-          each t in tags
-            +tagNav(t)
 block footer

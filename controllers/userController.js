@@ -30,8 +30,10 @@ exports.validateRegister = (req, res, next) => {
     req.checkBody('password-confirm', 'Your Passwords do not match').equals(req.body.password);
     const errors = req.validationErrors();
     if (errors) {
+        const name = req.body.name;
+        const email = req.body.email;
         req.flash('danger', errors.map(err => err.msg));
-        res.render('register', { title: 'Create an Account', body: req.body, flashes: req.flash() });
+        res.render('register', { title: 'Create an Account', name, email, flashes: req.flash() });
         //STop fn from running
         return;
     }

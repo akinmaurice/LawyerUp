@@ -1,4 +1,5 @@
 mixin tagNav(t = {})
   li.list-inline-item
-    a(href=`/tags/${t._id}`).btn.btn-warning.btn-block.btn-lg.btn-tag
+    a(href=`/tags/${t._id}`).btn.btn-warning.btn-block.btn-lg.btn-tag.btntagNav
       span #{t._id}&nbsp;
+      span.badge.badge-primary.badge-pill #{t.count}

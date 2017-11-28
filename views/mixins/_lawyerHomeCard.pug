@@ -63,11 +63,11 @@ mixin lawyerHomeCard(lawyer = {})
                 .col-lg-6.col-md-6.col-sm-6.col-xs-12
                   i.fa.fa-check-circle.text-primary &nbsp;&nbsp;
                   span.text-muted MEMBER SINCE:&nbsp;&nbsp;
-                  span #{h.moment(lawyer.created).fromNow()}
+                  span #{h.moment(lawyer.created).fromNow(true)}
                 .col-lg-6.col-md-6.col-sm-6.col-xs-12
                   i.fa.fa-id-badge.text-warning &nbsp;&nbsp;
                   span.text-muted LICENSED FOR:&nbsp;&nbsp;
-                  span 9 years
+                  span #{h.moment(lawyer.barYear).fromNow(true)}
       .row.text-center
         .col-lg-12
           .card.lawyer-card

@@ -10,6 +10,11 @@ block content
   .container-fluid
     .row
       .col-lg-9
+        ul.list-inline
+          each t in tags
+            +tagNav(t)
+    .row
+      .col-lg-9
         if lawyers.length >= 1
           each lawyer in lawyers
             +lawyerCard(lawyer)
@@ -17,11 +22,4 @@ block content
           .alert.alert-danger.text-center There is currently no Lawyer for this search.
     br
     br
-    hr
-    .row
-      .col-lg-9
-        ul.list-inline
-          each t in tags
-            +tagNav(t)
-
 block footer

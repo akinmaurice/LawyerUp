@@ -6,7 +6,7 @@ mixin lawyerCard(lawyer = {})
           img(src="/images/profile.png", alt="dhdh").lawyer-image
         .col-lg-6.col-md-6.col-sm-6
           p.lawyer-name #{lawyer.name}
-          p 9+ Years Experience
+          p #{h.moment(lawyer.barYear).fromNow(true)}+ Experience
           ul.list-inline
             each tag in lawyer.tags
               li.list-inline-item
@@ -17,7 +17,7 @@ mixin lawyerCard(lawyer = {})
             span.text-success 5/5
           p
             i.fa.fa-map-marker.text-warning &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            span Ikeja, Lagos
+            span #{lawyer.location}
           p
             i.fa.fa-eye.text-warning &nbsp;&nbsp;&nbsp;&nbsp;
             span 150+ Visits
