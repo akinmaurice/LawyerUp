@@ -31,7 +31,7 @@ exports.createAppointment = async(req, res) => {
     //SEND MAIL TO THE USER WITH THE REQUEST HERE
     pug.renderFile('./views/email/lawyerContact.pug', {
         //Lawyer EMail Address
-        mail: req.body.lawyerEmail,
+        lawyerName: req.body.lawyerName,
         name: req.body.name,
         email: req.body.email,
         phone: req.body.phone
