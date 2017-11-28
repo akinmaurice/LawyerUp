@@ -3,7 +3,7 @@ mixin lawyerHomeCard(lawyer = {})
     .col-lg-3.col-md-12.col-sm-12
       .card.lawyer-card
           .card-body
-            img(src="/images/profile.png", alt="dhdh").lawyerHomeImageCard
+            img(src=`${lawyer.gravatar }`, alt="dhdh").lawyerHomeImageCard
     .col-lg-9.col-md-12.col-sm-12
       .row.text-center
         .col-lg-12

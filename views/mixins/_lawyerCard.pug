@@ -3,7 +3,7 @@ mixin lawyerCard(lawyer = {})
     .card-body
       .row
         .col-lg-3.col-md-3.col-sm-3
-          img(src="/images/profile.png", alt="dhdh").lawyer-image
+          img(src=`${lawyer.gravatar }`, alt="dhdh").lawyer-image
         .col-lg-6.col-md-6.col-sm-6
           p.lawyer-name #{lawyer.name}
           p #{h.moment(lawyer.barYear).fromNow(true)}+ Experience

@@ -6,6 +6,7 @@ const slug = require('slugs');
 const validator = require('validator');
 const mongodbErrorHandler = require('mongoose-mongodb-errors');
 const passportLocalMongoose = require('passport-local-mongoose');
+const md5 = require('md5');
 
 const lawyerSchema = new Schema({
     email: {
