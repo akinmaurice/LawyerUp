@@ -152,7 +152,7 @@ exports.update = async (req, res) => {
     req.flash('danger', 'Password reset Invalid or has expired!');
     res.redirect('/login');
   } else {
-    const setPassword = promisify(User.setPassword, user);
+    const setPassword = promisify(user.setPassword, user);
     await setPassword(req.body.password);
     user.resetPasswordToken = undefined;
     user.resetPasswordExpires = undefined;
