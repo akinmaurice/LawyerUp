@@ -1,7 +1,6 @@
 /*
   This is a file of data and helper functions that we can expose and use in our templating function
 */
-
 // FS is a built in module to node that let's us read files from the system we're running on
 // const fs = require('fs');
 
@@ -37,19 +36,30 @@ exports.location = ['Abia', 'Abuja', 'Adamawa', 'Akwa Ibom', 'Anambra', 'Bauchi'
 ];
 
 // DIY DOCUMENTS JSON FILE
-exports.diy = [
-  {
-    title: 'Rent Agreement', icon: 'home', color: 'default', documents: ['Rental Agreement', 'Quit Notice', 'Lease Agreement'],
-  },
-  {
-    title: 'Business Management', icon: 'bar-chart', color: 'success', documents: ['Business Name Registration', 'Company Incorporation', 'Non-Disclosure', 'Co-Founders Agreement', 'Terms and Conditions'],
-  },
-  {
-    title: 'Employment', icon: 'users', color: 'primary', documents: ['Job Offer Letter', 'Termination Letter', 'Employment Agreement', 'Non-Disclosure', 'Employee Warning', 'Resignation Letter'],
-  },
-  {
-    title: 'Settle Disputes', icon: 'gavel', color: 'danger', documents: ['Concillation Agreement', 'Mediation Agreement'],
-  },
+exports.diy = [{
+  title: 'Rent Agreement',
+  icon: 'home',
+  color: 'default',
+  documents: ['Rental Agreement', 'Quit Notice', 'Lease Agreement'],
+},
+{
+  title: 'Business Management',
+  icon: 'bar-chart',
+  color: 'success',
+  documents: ['Business Name Registration', 'Company Incorporation', 'Non-Disclosure', 'Co-Founders Agreement', 'Terms and Conditions'],
+},
+{
+  title: 'Employment',
+  icon: 'users',
+  color: 'primary',
+  documents: ['Job Offer Letter', 'Termination Letter', 'Employment Agreement', 'Non-Disclosure', 'Employee Warning', 'Resignation Letter'],
+},
+{
+  title: 'Settle Disputes',
+  icon: 'gavel',
+  color: 'danger',
+  documents: ['Concillation Agreement', 'Mediation Agreement'],
+},
 ];
 // ABOUT PAGE CONTENT
 exports.about = 'We are on a journey to make your legal experience remarkable.&nbsp;' +
@@ -74,7 +84,14 @@ exports.careers = ['We’re a team of energetic, talented professionals looking 
 ];
 
 // BAR YEARS
-exports.years = ['1990', '1991', '1992'];
+// Get the Start and End Years, then loop through to current year
+const startYear = 1991;
+const endYear = (new Date()).getFullYear();
+const year = [];
+for (let i = startYear; i < endYear; i++) {
+  year.push(i);
+}
+exports.years = year;
 
 // GENDER OPTIONS
 exports.gender = ['Male', 'Female'];
