@@ -1,0 +1,31 @@
+extends layout
+
+include mixins/_navigationCard
+include mixins/_lawyerCard
+include mixins/_tagNav
+include mixins/_searchNav
+include mixins/_flashMessages
+
+block content
+  +flashMessages()
+  +navigationCard(title)
+  .container
+    +searchNav()
+  if !lawyers
+    .container
+  else if lawyers.length >=1
+    .container-fluid
+      .row
+        .col-lg-9
+          ul.list-inline
+            each t in tags
+              +tagNav(t)
+      .row
+        .col-lg-9
+          each lawyer in lawyers
+            +lawyerCard(lawyer)
+        .col-lg-3
+          .adSideBar
+  br
+  br
+block footer

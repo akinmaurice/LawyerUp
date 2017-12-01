@@ -115,6 +115,7 @@ exports.getLawyers = async (req, res) => {
   // Query the Database for all the Posts in the DB
   const lawyersPromise = await Lawyer.find({
     status: true,
+    verification: true,
   }).sort({
     created: -1,
   }).skip(skip).limit(limit);
@@ -149,6 +150,7 @@ exports.getLawyersByTags = async (req, res) => {
   const lawyersPromise = await Lawyer.find({
     tags: tagQuery,
     status: true,
+    verification: true,
   }).sort({
     created: -1,
   }).skip(skip).limit(limit);
@@ -158,7 +160,6 @@ exports.getLawyersByTags = async (req, res) => {
   if (!lawyers.length && skip) {
     res.redirect(`/directory/page/${pages}`);
   } else {
-    console.log(count, page, pages, tags);
     res.render('tags', {
       tags,
       title: `${tag} Lawyers`,
@@ -215,4 +216,35 @@ exports.activate = async (req, res) => {
     // redirect to login page for lawyers
     res.redirect('/login');
   }
+};
+
+
+// Lawyer Index Search
+exports.searchLawyer = async (req, res) => {
+  req.checkBody('location', 'Please select a location from the drop down options').notEmpty();
+  req.checkBody('tag', 'Please select one of the tags from the dropdown options!').notEmpty();
+  const errors = req.validationErrors();
+  if (errors) {
+    req.flash('danger', errors.map(err => err.msg));
+    res.render('search', { title: 'Search Lawyers', flashes: req.flash() });
+    return;
+  }
+  const tag = req.body.tag;
+  const tagQuery = tag || { $exists: true };
+  const tagsPromise = await Lawyer.getTagsList();
+  const lawyersPromise = await Lawyer.find({
+    tags: tagQuery,
+    location: req.body.location,
+  });
+  const countPromise = await Lawyer.find({
+    tags: tagQuery,
+    location: req.body.location,
+  }).count();
+  const [tags, lawyers, count] = await Promise.all([tagsPromise, lawyersPromise, countPromise]);
+  res.render('search', {
+    title: 'Search Lawyers',
+    lawyers,
+    tags,
+    count,
+  });
 };

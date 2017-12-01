@@ -1,0 +1,18 @@
+mixin indexForm()
+  form(method="POST" action="/search").formSearch
+    .row
+      .col-lg-4.col-md-4.col-sm-12.col-xs-12
+        .form-group
+          select(name="location" id="location" ).form-control.form-control-lg
+            option(disabled selected) Location
+            each location in h.location
+              option(value=`${location}`) #{location}
+      .col-lg-4.col-md-4.col-sm-12.col-xs-12
+        .form-group
+          select(name="tag" id="tag").form-control.form-control-lg
+            option(disabled selected) Speciality
+            each choice in h.tags
+              option(value=`${choice}`) #{choice}
+      .col-lg-4.col-md-4.col-sm-12.col-xs-12
+        .form-group
+          button.btn.btn-primary.btn-block(type="submit") Find Lawyer

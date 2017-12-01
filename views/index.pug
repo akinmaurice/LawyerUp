@@ -1,6 +1,7 @@
 extends layout
 
 include mixins/_serviceCard
+include mixins/_indexForm
 
 block content
   .jumbotron
@@ -12,7 +13,7 @@ block content
           h1 Need legal help but don’t know who to ask?
           h3.d-none.d-md-block Find, consult and hire the best Lawyers in Nigeria
           br
-          a(href="/directory").btn.btn-primary.btn-lg.btn-index Get Started
+          +indexForm()
           br
           br
           h4 Need immediate Legal help?

@@ -41,14 +41,12 @@ router.get('/faq', appController.getFaq);
 /* GET  LAWYER DIRECTORY Page. */
 router.get(
   '/directory',
-  authController.isLoggedIn,
   catchErrors(lawyerController.getLawyers),
 );
 
 /* Rouute to get Lawyers paginated pages */
 router.get(
   '/directory/page/:page',
-  authController.isLoggedIn,
   catchErrors(lawyerController.getLawyers),
 );
 
@@ -102,14 +100,12 @@ router.post(
 /* Route to get lawyers by tag */
 router.get(
   '/tags/:tag',
-  authController.isLoggedIn,
   catchErrors(lawyerController.getLawyersByTags),
 );
 
 /* Rouute to get Lawyers by tags paginated pages */
 router.get(
   '/tags/:tag/directory/page/:page',
-  authController.isLoggedIn,
   catchErrors(lawyerController.getLawyersByTags),
 );
 
@@ -210,4 +206,10 @@ router.get(
   catchErrors(lawyerController.activate),
 );
 
+
+// ROuter to SEARCH FOR LAWYERS
+router.post(
+  '/search',
+  catchErrors(lawyerController.searchLawyer),
+);
 module.exports = router;

@@ -55,6 +55,11 @@ const lawyerSchema = new Schema({
     default: false,
     required: true,
   },
+  verification: {
+    type: Boolean,
+    default: false,
+    required: true,
+  },
   tags: [String],
   resetPasswordToken: String,
   resetPasswordExpires: Date,
@@ -73,7 +78,7 @@ lawyerSchema.pre('save', async function (next) {
     return; // stop this this function back to save
   }
   /* THis takes the Name of the Lawyer, run it through the schema
-    and get the slug field and assign it to the output */
+      and get the slug field and assign it to the output */
   this.slug = slug(this.name);
   // find Lawyer with the same slug.
   const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
