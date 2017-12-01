@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
 // Use global promise for mongoose
 mongoose.Promise = global.Promise;
 
 // Make Schema
-const jobSchema = new mongoose.Schema({
+const jobSchema = new Schema({
   title: {
     type: String,
     required: 'Please supply a valid Job Title',

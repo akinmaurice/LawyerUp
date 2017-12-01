@@ -16,5 +16,5 @@ mongoose.connection.on('error', (err) => {
 require('./models/User');
 require('./models/Lawyer');
 require('./models/Request');
-require('./models/Appointment');
 require('./models/Job');
+require('./models/Appointment');
