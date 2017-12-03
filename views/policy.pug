@@ -3,7 +3,7 @@ extends layout
 include mixins/_navigationCard
 
 block content
-  +navigationCard()
+  +navigationCard(title)
   .container
     .row
       .col-lg-12
@@ -11,7 +11,6 @@ block content
           .card-body
             .row
               .col-lg-12.text-center
-                h1 #{title}
                 p.text-about.text-justify.text-center Policy Here
                 br
     .row

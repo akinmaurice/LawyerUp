@@ -856,6 +856,20 @@ textarea {
     background-size: cover;
 }
 
+.errorStatus {
+    font-size: 100px;
+    font-weight: lighter;
+    font-family: "Lato";
+}
+
+.errorMessage {
+    font-family: "Lato";
+}
+
+.indexHelpJumbo {
+    background-size: cover;
+}
+
 
 /*
 .serviceCard {

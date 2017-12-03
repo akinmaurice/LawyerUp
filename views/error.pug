@@ -5,7 +5,9 @@ block content
       br
       .row
         .col-lg-12
-          h2= status
-          p= message
+          br
+          br
+          h1.errorStatus= status
+          h3.errorMessage= message
           pre.error!= stackHighlighted
 
