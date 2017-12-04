@@ -75,9 +75,30 @@ exports.editPassword = (req, res) => {
   res.render('editPassword', { title: 'Edit Password' });
 };
 
-// Controller to update user account
+// MiddleWare to chheck if the passwords match
+exports.checkPasswordsMatch = (req, res, next) => {
+  if (req.body.newPassword === req.body.passwordConfirm) {
+    next(); // MOVE TO THE NEXT FUNCTION
+  } else {
+    req.flash('danger', 'Passwords Do not Match!');
+    res.redirect('back');
+  }
+};
+
+// Controller to update user account Logged In User
 exports.updatePassword = async (req, res) => {
-  res.json(req.body);
+  const user = await User.findOne({
+    email: req.user.email,
+  });
+  if (!user) {
+    res.redirect('/logout');
+  } else {
+    const changePassword = promisify(user.changePassword, user);
+    await changePassword(req.body.oldPassword, req.body.newPassword);
+    const updatedUser = await user.save();
+    await req.login(updatedUser);
+    res.redirect('/');
+  }
 };
 
 // Controller to get reset page

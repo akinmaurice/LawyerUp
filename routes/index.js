@@ -153,6 +153,14 @@ router.get(
   authController.editPassword,
 );
 
+// ROute to Update User Password Logged in User
+router.post(
+  '/user/edit-password',
+  authController.isLoggedIn,
+  authController.checkPasswordsMatch,
+  catchErrors(authController.updatePassword),
+);
+
 // ROUTER TO RESET USER PASSWORD
 router.get(
   '/user/reset/:token',
