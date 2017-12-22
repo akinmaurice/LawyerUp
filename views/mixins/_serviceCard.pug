@@ -6,4 +6,6 @@ mixin serviceCard(service = {})
           i( class=`fa fa-${service.icon} fa-stack-1x serviceIcon`)
       .card-body
         h5.services #{service.title}
-        a(href=`${service.link}`).btn.btn-app.btn-sm Learn More
+        br
+        p.serviceText #{service.text}
+        //- a(href=`${service.link}`).btn.btn-app.btn-sm Learn More

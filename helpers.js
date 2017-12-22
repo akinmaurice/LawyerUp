@@ -10,10 +10,30 @@ exports.moment = require('moment');
 
 // SETUP MENU VARIABLES FOR INDEX PAGE
 exports.menu = [
-  { title: 'Engage a Lawyer', icon: 'users', link: '/engage' },
-  { title: 'Find Lawyers', icon: 'search', link: '/directory' },
-  { title: 'Business Name Registration', icon: 'trademark', link: '/agreement' },
-  { title: 'Draft Legal Agreements', icon: 'file-text-o', link: '/agreement' },
+  {
+    title: 'Find Lawyers',
+    icon: 'search',
+    link: '/directory',
+    text: 'Search through our List to find a Lawyer that suits your need.',
+  },
+  {
+    title: 'Best Listings',
+    icon: 'thumbs-o-up',
+    link: '/agreement',
+    text: 'You get the very best and verified Lawyers.',
+  },
+  {
+    title: '24/7 Support',
+    icon: 'phone',
+    link: '/agreement',
+    text: 'We are always available by Phone and Email all round the clock.',
+  },
+  {
+    title: 'Engage a Lawyer',
+    icon: 'users',
+    link: '/engage',
+    text: 'Want us to recommed you a Lawyer?',
+  },
   // {  title: 'Free Legal Advice', icon: 'comments-o', link: '/legal-advice'}
 ];
 
@@ -83,6 +103,61 @@ exports.careers = ['We’re a team of energetic, talented professionals looking 
     'And above all, we respect our customers through a high quality and transparent product and service offering.',
 ];
 
+// Terms of Service
+exports.termsRegistration = 'You may browse the Site without registering for an account. ' +
+    '<br>In order to fully access and use our Services, ' +
+  'you must register for an account (“Account”) and provide certain information about yourself ' +
+  'as prompted by the account registration form.<br>' +
+  '<br>You represent and warrant that: <br>(a) all required ' +
+  'registration information you submit is truthful and accurate; <br>(b) you will maintain the accuracy ' +
+  'of such information.<br><br>You are responsible for maintaining the confidentiality of ' +
+  'your Account login information and are fully responsible for all activities that ' +
+  'occur under your Account. You agree to immediately notify Us of any unauthorized use, ' +
+  'or suspected unauthorized use of your Account or any other breach of security. We ' +
+  'cannot and will not be liable for any loss or damage arising from your failure to comply ' +
+  'with the above requirements.';
+
+exports.termsPermittedUse = '';
+
+exports.termsDisclaimer = 'The Site and its Content are provided to you on an "as-is" and "as-available" basis.<br>' +
+'We will not be liable for any kind of damage(s) arising from the use of this Site. <br>' +
+'We do not guarantee that the site will always be safe, secure or bug free or that the site ' +
+'will always function without disruptions, ' +
+'delays or imperfections.<br> We are not responsible for the actions or information of third parties, ' +
+'and you release us from any claims and damages, known and unknown, ' +
+'arising out of or in any way connected with any claim you have against any such third party.';
+
+exports.termsIndemfication = 'If anyone brings a claim against us related to your use of the Site, ' +
+'the Content, your User Content or your violation of ' +
+'these Terms, you agree to indemnify and hold Us, ' +
+'our affiliates, agents, other partners and employees, ' +
+'harmless from any loss, liability, claim or demand, including reasonable attorneys fees, ' +
+'made by any third party due to or arising out of your use of the Site, ' +
+'including also your use of the Site to provide a link to another site or ' +
+'to upload content or other information to the Site.';
+
+exports.policyPersonal = 'Your personal details are stored confidentially and will only be used to ' +
+'ensure your order is identified to you. Please note that we do not store financial information. <br> ' +
+'Only personal information required for registration is collected from users in order to ' +
+'search and connect with a lawyer. <br>' +
+'We may contact you with information about other products or services you may find useful. ' +
+'You have the right to opt out of these mailings at any time by unsubscribing via email. <br> ' +
+'Some of your personal information is shared with lawyers ' +
+'who you have shown interest in so as to allow them contact you. <br> ' +
+'We may provide your personal information when it is necessary to comply with laws or regulations, ' +
+'to assist law enforcement, to enforce the terms under which you transacted with WEBSITE, ' +
+'or to protect the rights of WEBSITE, users of the Site or others. <br>';
+
+exports.policySecurity = 'This Site has security measures in place to protect the loss, '+
+'misuse and alteration of the information under our control. '+
+'We use 128 bit industry standard Secure Server Software (SSL) for your transactions with us. '+
+'It encrypts all of your personal information so it cannot be read as the information travels over the Internet. <br>'
+
+exports.policy3rdParty = ' We are not responsible for the privacy policies of '+
+'other third parties who may advertise on our site. '+
+'If you follow a link to another web site, please consult '+
+'their individual policy as we are not responsible'+
+'for their privacy policies.';
 // BAR YEARS
 // Get the Start and End Years, then loop through to current year
 const startYear = 1991;

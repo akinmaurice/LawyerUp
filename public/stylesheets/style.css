@@ -391,7 +391,7 @@ textarea {
 .text-subhead {
     word-spacing: 3px;
     letter-spacing: 1px;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 150%;
     font-family: Ubuntu, "Montserrat", sans-serif;
 }
@@ -512,6 +512,7 @@ textarea {
     letter-spacing: 1px;
     font-family: Ubuntu, "Montserrat", sans-serif;
     font-size: 20px;
+    font-weight: bold;
 }
 
 .serviceIcon {
@@ -838,7 +839,6 @@ textarea {
     min-height: 450px;
     max-height: 450px;
     height: 450px;
-    background-image: url("../images/career2.jpg");
     background-repeat: no-repeat;
     background-position: center;
     -webkit-background-size: cover;
@@ -849,7 +849,6 @@ textarea {
     min-height: 450px;
     max-height: 450px;
     height: 450px;
-    background-image: url("../images/career1.jpg");
     background-repeat: no-repeat;
     background-position: center;
     -webkit-background-size: cover;
@@ -871,8 +870,12 @@ textarea {
 }
 
 
-/*
 .serviceCard {
-    border: none;
+    min-height: 300px;
+    max-height: 300px;
+    height: 300px;
 }
-*/
+
+.serviceText {
+  font-family: Ubuntu, "Montserrat", sans-serif;
+}

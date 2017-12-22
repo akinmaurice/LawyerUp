@@ -10,8 +10,20 @@ block content
         .card
           .card-body
             .row
-              .col-lg-12.text-center
-                p.text-about.text-justify.text-center Policy Here
+              .col-lg-12
+                ul(class="list-inline text-info termspolicydate")
+                  li Last Updated: December 28, 2017
+                h4 HOW WE USE PERSONAL INFORMATION
                 br
+                p.text-about.text-justify !{h.policyPersonal}
+                br
+                h4 SECURITY POLICY
+                br
+                p.text-about.text-justify !{h.policySecurity}
+                br
+                h4 THIRD PARTY POLICY
+                br
+                p.text-about.text-justify !{h.policy3rdParty}
+
     .row
       br
