@@ -6,9 +6,7 @@
         "node": "7.6.0"
     },
     "scripts": {
-        "watch": "nodemon ./bin/www --ignore public/",
-        "start": "node ./bin/www",
-        "dev": "npm run watch"
+        "start": "node ./bin/www"
     },
     "dependencies": {
         "body-parser": "~1.17.1",
