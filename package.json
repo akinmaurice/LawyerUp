@@ -7,7 +7,8 @@
     },
     "scripts": {
         "watch": "nodemon ./bin/www --ignore public/",
-        "start": "npm run watch"
+        "start": "node ./bin/www",
+        "dev": "npm run watch"
     },
     "dependencies": {
         "body-parser": "~1.17.1",
