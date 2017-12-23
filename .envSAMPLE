@@ -1,0 +1,7 @@
+NODE_ENV=development
+DATABASE=mongodb connection url
+SECRET=session secret
+MAIL_SMTP_HOST=smtp host
+MAIL_USER=mail username
+MAIL_PASS= mail smtp password
+MAIL_PORT=Port here
