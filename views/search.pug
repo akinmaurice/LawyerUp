@@ -25,12 +25,12 @@ block content
           each lawyer in lawyers
             +lawyerCard(lawyer)
         .col-lg-3
-          .adSideBar
   else
     .container
       row
-        .col-lg-12
+        .col-lg-12.text-center
           .alert.alert-danger Could not find any lawyer for that search
+          a(href="/directory") View all Lawyers
   br
   br
 block footer
