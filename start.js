@@ -10,8 +10,6 @@ mongoose.connection.on('error', (err) => {
   console.error(`🙅 🚫 🙅 🚫 🙅 🚫 🙅 🚫 → ${err.message}`);
 });
 
-// READY?! Let's go!
-
 // Import all of our models
 require('./models/User');
 require('./models/Lawyer');
