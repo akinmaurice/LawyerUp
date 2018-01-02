@@ -17,11 +17,6 @@ block content
     .container-fluid
       .row
         .col-lg-9
-          ul.list-inline
-            each t in tags
-              +tagNav(t)
-      .row
-        .col-lg-9
           each lawyer in lawyers
             +lawyerCard(lawyer)
         .col-lg-3

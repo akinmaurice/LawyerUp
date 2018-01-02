@@ -26,14 +26,15 @@ exports.validateLawyer = (req, res, next) => {
   req.checkBody('gender', 'Please select a valid gender!').notEmpty();
   req.checkBody('barYear', 'Please select a valid bar year!').notEmpty();
   req.checkBody('about', 'About cannot be Blank!').notEmpty();
-  req.checkBody('tags', 'Please select at least one of the tags!').notEmpty();
+  req.checkBody('tags', 'Please select at least one of the Legal Areas!').notEmpty();
   const errors = req.validationErrors();
   if (errors) {
-    const email = req.body.email;
-    const name = req.body.name;
-    const rate = req.body.rate;
-    const about = req.body.about;
-    req.flash('danger', errors.map(err => err.msg));
+    const { email } = req.body;
+    const { name } = req.body;
+    const { rate } = req.body;
+    const { about } = req.body;
+    req.flash('danger', errors[0].msg);
+    console.log(errors);
     res.render('lawyerSignUp', {
       title: 'Lawyer Sign Up',
       email,
@@ -144,7 +145,7 @@ exports.getLawyersByTags = async (req, res) => {
   const limit = 7;
   // SET THE NUMBER OF Lawyers TO SKIP BASED ON PAGE NUMBER
   const skip = (page * limit) - limit;
-  const tag = req.params.tag;
+  const { tag } = req.params;
   const tagQuery = tag || { $exists: true };
   const tagsPromise = await Lawyer.getTagsList();
   const lawyersPromise = await Lawyer.find({
@@ -229,7 +230,7 @@ exports.searchLawyer = async (req, res) => {
     res.render('search', { title: 'Search Lawyers', flashes: req.flash() });
     return;
   }
-  const tag = req.body.tag;
+  const { tag } = req.body;
   const tagQuery = tag || { $exists: true };
   const tagsPromise = await Lawyer.getTagsList();
   const lawyersPromise = await Lawyer.find({
