@@ -98,7 +98,8 @@ exports.contactUs = (req, res) => {
     subject: 'Contact Message',
     data,
   });
-  res.json(data);
+  req.flash('success', 'Message Submitted. We will contact you shortly');
+  res.redirect('back');
 };
 
 // Controller to request call Back
