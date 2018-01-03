@@ -55,9 +55,50 @@ exports.getDisclaimer = (req, res) => {
   res.render('disclaimer', { title: 'Disclaimer' });
 };
 
+// Middleware to verify Contact Us Input
+exports.verifyContactUs = (req, res, next) => {
+  req.checkBody('name', 'Name field cannot be empty').notEmpty();
+  req.checkBody('email', 'That Email is not valid').isEmail();
+  req.sanitizeBody('email').normalizeEmail({
+    remove_dots: false,
+    remove_extension: false,
+    gmail_remove_subaddress: false,
+  });
+  req.checkBody('phone', 'Phone cannot be Blank!').notEmpty();
+  req.checkBody('message', 'Legal Request cannot be Blank!').notEmpty();
+  const errors = req.validationErrors();
+  if (errors) {
+    const { name } = req.body;
+    const { email } = req.body;
+    const { phone } = req.body;
+    const { message } = req.body;
+    req.flash('danger', errors.map(err => err.msg));
+    res.render('contact', {
+      title: 'Contact Us',
+      name,
+      phone,
+      message,
+      email,
+      flashes: req.flash(),
+    });
+    // STop fn from running
+    return;
+  }
+  next();
+};
+
 // Contact Us Controller
 exports.contactUs = (req, res) => {
-  res.json(req.body);
+  const data = `Name: ${req.body.name} <br>
+  Email: ${req.body.email} <br>
+  Phone: ${req.body.phone} <br>
+  Message: ${req.body.message}`;
+  mail.send({
+    user: process.env.CONTACT_MAIL,
+    subject: 'Contact Message',
+    data,
+  });
+  res.json(data);
 };
 
 // Controller to request call Back
@@ -93,8 +134,8 @@ exports.verifyRequest = (req, res, next) => {
   req.checkBody('location', 'Please select a Location!').notEmpty();
   const errors = req.validationErrors();
   if (errors) {
-    const phone = req.body.phone;
-    const message = req.body.message;
+    const { phone } = req.body;
+    const { message } = req.body;
     req.flash('danger', errors.map(err => err.msg));
     res.render('engageLawyer', {
       title: 'Engage a Lawyer',

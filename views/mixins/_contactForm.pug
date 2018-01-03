@@ -6,12 +6,12 @@ mixin contactForm()
       .card-body
         form(method="post").form-contact
           .form-group
-            input(type="text" name="name" id="name" placeholder="Full Name").form-control.form-control-lg
+            input(type="text" name="name" id="name" value=`${name  || ''}` placeholder="Full Name").form-control.form-control-lg
           .form-group
-            input(type="email" name="email" id="email" placeholder="Email Address").form-control.form-control-lg
+            input(type="email" name="email" id="email" value=`${email  || ''}` placeholder="Email Address").form-control.form-control-lg
           .form-group
-            input(type="phone" name="phone" id="phone" placeholder="Phone Number").form-control.form-control-lg
+            input(type="phone" name="phone" id="phone" value=`${phone  || ''}` placeholder="Phone Number").form-control.form-control-lg
           .form-group
-            textarea(rows="10" name="message" placeholder="Your Message").form-control
+            textarea(rows="10" name="message" placeholder="Your Message").form-control #{message || ''}
           .form-group
             button(type="submit").btn.btn-primary.btn-lg Send Us a Message

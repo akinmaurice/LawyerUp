@@ -81,7 +81,11 @@ router.get('/forgot', authController.getForgot);
 router.post('/forgot', catchErrors(authController.forgot));
 
 /* ROute to Post Contact Us */
-router.post('/contact', appController.contactUs);
+router.post(
+  '/contact',
+  appController.verifyContactUs,
+  appController.contactUs,
+);
 
 /* ROute to Post Call Back Request */
 router.post('/call-request', appController.callBack);

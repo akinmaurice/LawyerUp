@@ -5,3 +5,4 @@ MAIL_SMTP_HOST=smtp host
 MAIL_USER=mail username
 MAIL_PASS= mail smtp password
 MAIL_PORT=Port here
+CONTACT_MAIL=contact Us Mail

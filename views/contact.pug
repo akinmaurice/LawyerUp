@@ -2,9 +2,11 @@ extends layout
 
 include mixins/_contactForm
 include mixins/_locationCard
+include mixins/_flashMessages
 include mixins/_navigationCard
 
 block content
+  +flashMessages()
   +navigationCard(title)
   .container-fluid
     .row
