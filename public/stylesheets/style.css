@@ -36,7 +36,7 @@ body {
 }
 
 .navbar-brand {
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .nav-gavel {
@@ -45,7 +45,7 @@ body {
 
 .navList {
     font-family: Ubuntu, "Montserrat", sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     word-spacing: -1px;
 }
 
