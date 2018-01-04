@@ -56,3 +56,50 @@ exports.createAppointment = async (req, res) => {
     }
   });
 };
+
+// Middleware to verify Request Call Back Request
+exports.verifyRequestCallBack = (req, res, next) => {
+  req.checkBody('name', 'Name field cannot be empty').notEmpty();
+  req.checkBody('email', 'That Email is not valid').isEmail();
+  req.sanitizeBody('email').normalizeEmail({
+    remove_dots: false,
+    remove_extension: false,
+    gmail_remove_subaddress: false,
+  });
+  req.checkBody('phone', 'Phone cannot be Blank!').notEmpty();
+  req.checkBody('message', 'Legal Request cannot be Blank!').notEmpty();
+  const errors = req.validationErrors();
+  if (errors) {
+    const { name } = req.body;
+    const { email } = req.body;
+    const { phone } = req.body;
+    const { message } = req.body;
+    req.flash('danger', errors.map(err => err.msg));
+    res.render('callBack', {
+      title: 'Request a CallBack',
+      name,
+      phone,
+      message,
+      email,
+      flashes: req.flash(),
+    });
+    // STop fn from running
+    return;
+  }
+  next();
+};
+
+// Contact Us Controller
+exports.requestCallBack = (req, res) => {
+  const data = `Name: ${req.body.name} <br>
+  Email: ${req.body.email} <br>
+  Phone: ${req.body.phone} <br>
+  Message: ${req.body.message}`;
+  mail.send({
+    user: process.env.CONTACT_MAIL,
+    subject: 'Contact Message',
+    data,
+  });
+  req.flash('success', 'Message Submitted. We will contact you shortly');
+  res.redirect('back');
+};

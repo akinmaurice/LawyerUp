@@ -88,7 +88,11 @@ router.post(
 );
 
 /* ROute to Post Call Back Request */
-router.post('/call-request', appController.callBack);
+router.post(
+  '/call-request',
+  appointmentController.verifyRequestCallBack,
+  appointmentController.requestCallBack,
+);
 
 /* ROute to get Lawyer Reg Page */
 router.get('/join-us', lawyerController.registerLawyer);

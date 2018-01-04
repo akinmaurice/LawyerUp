@@ -2,8 +2,10 @@ extends layout
 
 include mixins/_navigationCard
 include mixins/_callbackForm.pug
+include mixins/_flashMessages
 
 block content
+  +flashMessages()
   +navigationCard(title)
   .container
     .row

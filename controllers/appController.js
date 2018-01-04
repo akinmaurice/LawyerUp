@@ -102,11 +102,6 @@ exports.contactUs = (req, res) => {
   res.redirect('back');
 };
 
-// Controller to request call Back
-exports.callBack = (req, res) => {
-  res.json(req.body);
-};
-
 /* Controller to get engage a Lawyer page
 We Match the User to a Valid Lawyer who can handle your legal issues
 */
