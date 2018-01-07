@@ -44,7 +44,7 @@ body {
 }
 
 .navList {
-    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-family: 'Ubuntu', "Montserrat", sans-serif;
     font-size: 15px;
     word-spacing: -1px;
 }
@@ -132,7 +132,7 @@ body {
     margin: 5px;
     word-spacing: 3px;
     letter-spacing: 1px;
-    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-family: 'Ubuntu', "Montserrat", sans-serif;
     font-size: 20px;
 }
 
@@ -353,7 +353,7 @@ textarea {
     border-top-right-radius: 0;
     word-spacing: 3px;
     letter-spacing: 1px;
-    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-family: 'Ubuntu', "Montserrat", sans-serif;
     font-size: 20px;
 }
 
@@ -383,7 +383,7 @@ textarea {
     border-bottom-right-radius: 0;
     word-spacing: 3px;
     letter-spacing: 1px;
-    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-family: 'Ubuntu', "Montserrat", sans-serif;
     font-size: 15px;
     margin-bottom: 15px;
 }
@@ -393,14 +393,14 @@ textarea {
     letter-spacing: 1px;
     font-size: 20px;
     line-height: 150%;
-    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-family: 'Ubuntu', "Montserrat", sans-serif;
 }
 
 .form-group p {
     font-size: 12px;
     word-spacing: 1px;
     letter-spacing: .5px;
-    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-family: 'Ubuntu', "Montserrat", sans-serif;
 }
 
 .lawyer-card {
@@ -429,7 +429,7 @@ textarea {
     font-size: 12px;
     word-spacing: 1px;
     letter-spacing: .5px;
-    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-family: 'Ubuntu', "Montserrat", sans-serif;
 }
 
 .lawyer-name {
@@ -510,7 +510,7 @@ textarea {
 .services {
     word-spacing: 1px;
     letter-spacing: 1px;
-    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-family: 'Ubuntu', "Montserrat", sans-serif;
     font-size: 20px;
     font-weight: bold;
 }
@@ -528,7 +528,7 @@ textarea {
     border-bottom-right-radius: 0;
     word-spacing: 3px;
     letter-spacing: 1px;
-    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-family: 'Ubuntu', "Montserrat", sans-serif;
     font-size: 17px;
     margin-bottom: 15px;
 }
@@ -550,7 +550,7 @@ textarea {
     border-bottom-right-radius: 0;
     word-spacing: 2px;
     letter-spacing: 1px;
-    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-family: 'Ubuntu', "Montserrat", sans-serif;
     font-size: 16px;
     color: #FFF !important;
 }
@@ -562,14 +562,14 @@ textarea {
     border-bottom-right-radius: 0;
     word-spacing: 2px;
     letter-spacing: 1px;
-    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-family: 'Ubuntu', "Montserrat", sans-serif;
     font-size: 16px;
     color: #000 !important;
 }
 
 .lawyerName {
     word-spacing: 1px;
-    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-family: 'Ubuntu', "Montserrat", sans-serif;
     font-size: 17px;
 }
 
@@ -679,7 +679,7 @@ textarea {
 }
 
 .breadcrumb {
-    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-family: 'Ubuntu', "Montserrat", sans-serif;
     font-size: 15px;
 }
 
@@ -819,7 +819,7 @@ textarea {
 .formSearch {
     padding: 15px;
     margin: 0 auto;
-    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-family: 'Ubuntu', "Montserrat", sans-serif;
 }
 
 .formSearch .form-control {
@@ -877,13 +877,13 @@ textarea {
 }
 
 .serviceText {
-  font-family: Ubuntu, "Montserrat", sans-serif;
+  font-family: 'Ubuntu', "Montserrat", sans-serif;
 }
 
 .btnSearch {
     margin: 0px;
     word-spacing: 3px;
     letter-spacing: 1px;
-    font-family: Ubuntu, "Montserrat", sans-serif;
+    font-family: 'Ubuntu', "Montserrat", sans-serif;
     font-size: 17px;
 }
