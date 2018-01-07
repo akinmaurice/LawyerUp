@@ -1,7 +1,7 @@
 body {
     padding-top: 55px;
     color: #000505 !important;
-    font-family: karla, sans-serif;
+    font-family: 'karla';
     width: 100%;
     background-color: #F5F7FA;
 }
@@ -384,7 +384,7 @@ textarea {
     word-spacing: 3px;
     letter-spacing: 1px;
     font-family: Ubuntu, "Montserrat", sans-serif;
-    font-size: 17px;
+    font-size: 15px;
     margin-bottom: 15px;
 }
 

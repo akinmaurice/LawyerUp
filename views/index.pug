@@ -8,7 +8,7 @@ block content
     .container.text-center
       .row
         .col-lg-12
-          h2 Need legal help but don’t know who to ask?
+          h3 Need legal help but don’t know who to ask?
           h5.d-none.d-md-block Find, consult and hire the best Lawyers in Nigeria
           +indexForm()
           h5 Need immediate Legal help?
@@ -18,13 +18,12 @@ block content
   .container.text-center
     .row
       .col-lg-12
-        br
-        h3 Find Lawyers by Legal Areas
+        h5 Find Lawyers by Legal Areas
         br
     .row
       each item in h.tags
         .col-lg-4
-          a(href=`/tags/${item}`).btn.btn-warning.btn-block.btn-lg.btn-tag= item
+          a(href=`/tags/${item}`).btn.btn-warning.btn-block.btn-tag= item
     br
     br
     br
