@@ -1,5 +1,5 @@
 body {
-    padding-top: 55px;
+    padding-top: 52px;
     color: #000505 !important;
     word-spacing: 1px;
     letter-spacing: 1px;
@@ -39,16 +39,16 @@ body {
 }
 
 .navbar-brand {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .nav-gavel {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .navList {
     font-family: 'Ubuntu', "Montserrat", sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     word-spacing: -1px;
 }
 

@@ -31,7 +31,7 @@ exports.checkUserStatus = async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
   // Check if the User Exists!
   if (!user) {
-    req.flash('danger', 'No User with that email found');
+    req.flash('danger', 'No Email / Password incorrect');
     res.render('login', { title: 'Sign In', email: req.body.email, flashes: req.flash() });
     // STop fn from running
     return;

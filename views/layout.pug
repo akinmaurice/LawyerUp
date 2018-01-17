@@ -17,7 +17,7 @@ html(lang="en")
   body.text-justify
     nav.navbar.navbar-expand-lg.navbar-dark.bg-inverse.fixed-top
       .container-fluid
-        a(href="/").navbar-brand
+        a(href="/").navbar-brand.py-0
           i.fa.fa-gavel.nav-gavel &nbsp;&nbsp;
           span #{h.siteName}
         button(type="button" data-toggle="collapse" data-target="#navbarCollapse"  aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation").navbar-toggler.navbar-toggler-right
@@ -48,7 +48,7 @@ html(lang="en")
                       span Logout
             else
               li.nav-item.active
-                a(href="/login" class="btn btnNav").nav-link Sign In
+                a(href="/login").nav-link Sign In
                   span.sr-only (current)
 
 
