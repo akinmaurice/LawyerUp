@@ -148,15 +148,15 @@ exports.policyPersonal = 'Your personal details are stored confidentially and wi
 'to assist law enforcement, to enforce the terms under which you transacted with WEBSITE, ' +
 'or to protect the rights of WEBSITE, users of the Site or others. <br>';
 
-exports.policySecurity = 'This Site has security measures in place to protect the loss, '+
-'misuse and alteration of the information under our control. '+
-'We use 128 bit industry standard Secure Server Software (SSL) for your transactions with us. '+
-'It encrypts all of your personal information so it cannot be read as the information travels over the Internet. <br>'
+exports.policySecurity = 'This Site has security measures in place to protect the loss, ' +
+'misuse and alteration of the information under our control. ' +
+'We use 128 bit industry standard Secure Server Software (SSL) for your transactions with us. ' +
+'It encrypts all of your personal information so it cannot be read as the information travels over the Internet. <br>';
 
-exports.policy3rdParty = ' We are not responsible for the privacy policies of '+
-'other third parties who may advertise on our site. '+
-'If you follow a link to another web site, please consult '+
-'their individual policy as we are not responsible'+
+exports.policy3rdParty = ' We are not responsible for the privacy policies of ' +
+'other third parties who may advertise on our site. ' +
+'If you follow a link to another web site, please consult ' +
+'their individual policy as we are not responsible' +
 'for their privacy policies.';
 // BAR YEARS
 // Get the Start and End Years, then loop through to current year
@@ -172,4 +172,4 @@ exports.years = year;
 exports.gender = ['Male', 'Female'];
 
 // App Title
-exports.siteName = 'Lawyerup';
+exports.siteName = 'LawyerUp';
