@@ -19,9 +19,6 @@ mixin lawyerCard(lawyer = {})
             i.fa.fa-map-marker.text-warning &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             span #{lawyer.location}
           p
-            i.fa.fa-eye.text-warning &nbsp;&nbsp;&nbsp;&nbsp;
-            span 150+ Visits
-          p
             i.fa.fa-money.text-success &nbsp;&nbsp;&nbsp;&nbsp;
             span #{lawyer.rate}
           a(href=`/attorney/${lawyer.slug}`).btn.btn-primary.btn-lawyer.btn-block Contact Lawyer
