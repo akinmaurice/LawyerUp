@@ -193,11 +193,6 @@ exports.getContactLawyerForm = async (req, res) => {
   res.render('contactLawyer', { title: `Contact ${lawyer.name}`, lawyer });
 };
 
-// Controller get Lawyer login
-exports.getLogin = (req, res) => {
-  res.redirect('http://localhost:6969');
-};
-
 // ACTIVATE LAWYER ACCOUNT
 exports.activate = async (req, res) => {
   const lawyer = await Lawyer.findOne({
@@ -218,7 +213,6 @@ exports.activate = async (req, res) => {
     res.redirect('/login');
   }
 };
-
 
 // Lawyer Index Search
 exports.searchLawyer = async (req, res) => {
