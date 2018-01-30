@@ -207,9 +207,6 @@ router.post(
 // Router to Get Careers Page
 router.get('/career', catchErrors(appController.careers));
 
-// ROUTER FOR LAWYER SIGN IN
-router.get('/lawyer/login', lawyerController.getLogin);
-
 // ROUTER TO ACTIVATE USER ACCOUNT
 router.get(
   '/user/activate/:token',
