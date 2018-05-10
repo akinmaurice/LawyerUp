@@ -1,3 +1,4 @@
+const fs = require('fs');
 const express = require('express');
 const session = require('express-session');
 const expressValidator = require('express-validator');
@@ -6,7 +7,7 @@ const MongoStore = require('connect-mongo')(session);
 const path = require('path');
 const helmet = require('helmet');
 const favicon = require('serve-favicon');
-const logger = require('morgan');
+const morgan = require('morgan');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -14,9 +15,15 @@ const promisify = require('es6-promisify');
 const flash = require('connect-flash');
 const helpers = require('./helpers');
 const errorHandlers = require('./handlers/errorHandlers');
+const FileStreamRotator = require('file-stream-rotator');
+
+const loggerInit = require('./handlers/logger');
+
+const logDirectory = './log';
+const checkLogDir = fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+let accessLogStream;
+let logger;
 // const csrf = require('csurf');
-
-
 // import passport helper files
 require('./handlers/passport');
 
@@ -27,13 +34,36 @@ require('./handlers/passport');
 const index = require('./routes/index');
 
 const app = express();
+// initialize logger
+if (app.get('env') === 'development') {
+  logger = loggerInit('development');
+} else if (app.get('env') === 'production') {
+  logger = loggerInit('production');
+} else if (app.get('env') === 'test') {
+  logger = loggerInit('test');
+} else {
+  logger = loggerInit();
+}
+
+global.logger = logger;
+logger.info('Application starting...');
+logger.debug("Overriding 'Express' logger");
+
+if (checkLogDir) {
+  accessLogStream = FileStreamRotator.getStream({
+    date_format: 'YYYYMMDD',
+    filename: `${logDirectory}/lawyerUp-%DATE%.log`,
+    frequency: 'weekly',
+    verbose: false,
+  });
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+app.use(morgan('combined', { stream: accessLogStream }));
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
