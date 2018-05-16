@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const express = require('express');
 
 // import environmental variables from config file
 const config = require('./config');
@@ -33,3 +32,5 @@ const server = app.listen(app.get('port'), () => {
   logger.debug('##########################################################\n');
   logger.info(`Application Running → PORT ${server.address().port}`);
 });
+
+module.exports = server;
