@@ -17,6 +17,10 @@ const helpers = require('./helpers');
 const errorHandlers = require('./handlers/errorHandlers');
 const FileStreamRotator = require('file-stream-rotator');
 
+// import environmental variables from config file
+const config = require('./config');
+
+// Import Logger
 const loggerInit = require('./handlers/logger');
 
 const logDirectory = './log';
@@ -74,7 +78,7 @@ app.use(cookieParser());
 // Sessions allow us to store data on visitors from request to request
 // This keeps users logged in and allows us to send flash messages
 app.use(session({
-  secret: process.env.SECRET,
+  secret: config.appSecret,
   key: process.env.KEY,
   resave: false,
   saveUninitialized: false,
@@ -146,6 +150,11 @@ if (app.get('env') === 'development') {
 
 // production error handler
 app.use(errorHandlers.productionErrors);
+
+process.on('unhandledRejection', (reason, p) => {
+  logger.error('Unhandled Rejection at: Promise', p, 'reason:', reason);
+  // application specific logging, throwing an error, or other logic here
+});
 
 // done! we export it so we can start the site in start.js
 module.exports = app;

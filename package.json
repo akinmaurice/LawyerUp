@@ -6,7 +6,8 @@
         "node": "8.9.1"
     },
     "scripts": {
-        "start": "node ./bin/www"
+        "dev": "nodemon ./start.js",
+        "start": "node ./start.js"
     },
     "dependencies": {
         "body-parser": "~1.17.1",
