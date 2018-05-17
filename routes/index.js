@@ -9,34 +9,64 @@ const appointmentController = require('../controllers/appointmentController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 /* GET Homepage. */
-router.get('/', appController.getHomepage);
+router.get(
+  '/',
+  appController.getHomepage,
+);
 
 /* GET about Page. */
-router.get('/about', appController.getAbout);
+router.get(
+  '/about',
+  appController.getAbout,
+);
 
 /* GET contact Page. */
-router.get('/contact', appController.getContact);
+router.get(
+  '/contact',
+  appController.getContact,
+);
 
 /* GET DIY AGREEMENTS Page. */
-router.get('/agreement', appController.getDiy);
+router.get(
+  '/agreement',
+  appController.getDiy,
+);
 
 /* GET DIY AGREEMENTS Page. */
-router.get('/appointment', appController.getAppointment);
+router.get(
+  '/appointment',
+  appController.getAppointment,
+);
 
 /* GET  CALL BACK Page. */
-router.get('/call-request', appController.getCallBack);
+router.get(
+  '/call-request',
+  appController.getCallBack,
+);
 
 /* GET DISCLAIMER Page. */
-router.get('/disclaimer', appController.getDisclaimer);
+router.get(
+  '/disclaimer',
+  appController.getDisclaimer,
+);
 
 /* GET TERMS Page. */
-router.get('/terms', appController.getTerms);
+router.get(
+  '/terms',
+  appController.getTerms,
+);
 
 /* GET PLOCY Page. */
-router.get('/policy', appController.getPolicy);
+router.get(
+  '/policy',
+  appController.getPolicy,
+);
 
 /* GET  FAQ Page. */
-router.get('/faq', appController.getFaq);
+router.get(
+  '/faq',
+  appController.getFaq,
+);
 
 /* GET  LAWYER DIRECTORY Page. */
 router.get(
@@ -51,7 +81,10 @@ router.get(
 );
 
 /* GET Login. */
-router.get('/login', userController.getLogin);
+router.get(
+  '/login',
+  userController.getLogin,
+);
 
 /* Login User. */
 router.post(
@@ -62,10 +95,16 @@ router.post(
 );
 
 /* Logout User. */
-router.get('/logout', authController.logout);
+router.get(
+  '/logout',
+  authController.logout,
+);
 
 /* GET Register Page. */
-router.get('/register', userController.getRegister);
+router.get(
+  '/register',
+  userController.getRegister,
+);
 
 /* POST Register. */
 router.post(
@@ -75,10 +114,16 @@ router.post(
   userController.registerUser,
 );
 /* GET Forgot Password Page. */
-router.get('/forgot', authController.getForgot);
+router.get(
+  '/forgot',
+  authController.getForgot,
+);
 
 /* Reset User Account. */
-router.post('/forgot', catchErrors(authController.forgot));
+router.post(
+  '/forgot',
+  catchErrors(authController.forgot),
+);
 
 /* ROute to Post Contact Us */
 router.post(
@@ -95,7 +140,10 @@ router.post(
 );
 
 /* ROute to get Lawyer Reg Page */
-router.get('/join-us', lawyerController.registerLawyer);
+router.get(
+  '/join-us',
+  lawyerController.registerLawyer,
+);
 
 /* ROute to Create New Lawyer */
 router.post(
@@ -115,13 +163,6 @@ router.get(
 router.get(
   '/tags/:tag/directory/page/:page',
   catchErrors(lawyerController.getLawyersByTags),
-);
-
-/* Route to get the engage lawyer Page. */
-router.get(
-  '/engage',
-  authController.isLoggedIn,
-  appController.engageLawyer,
 );
 
 /* ROute to handle get Legal Advice Page */
@@ -161,7 +202,7 @@ router.get(
   authController.editPassword,
 );
 
-// ROute to Update User Password Logged in User
+// Route to Update User Password Logged in User
 router.post(
   '/user/edit-password',
   authController.isLoggedIn,
@@ -205,7 +246,10 @@ router.post(
 );
 
 // Router to Get Careers Page
-router.get('/career', catchErrors(appController.careers));
+router.get(
+  '/career',
+  catchErrors(appController.careers),
+);
 
 // ROUTER TO ACTIVATE USER ACCOUNT
 router.get(
@@ -225,4 +269,6 @@ router.post(
   '/search',
   catchErrors(lawyerController.searchLawyer),
 );
+
+
 module.exports = router;

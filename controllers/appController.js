@@ -102,13 +102,6 @@ exports.contactUs = (req, res) => {
   res.redirect('back');
 };
 
-/* Controller to get engage a Lawyer page
-We Match the User to a Valid Lawyer who can handle your legal issues
-*/
-exports.engageLawyer = (req, res) => {
-  res.render('engageLawyer', { title: 'Engage a Lawyer' });
-};
-
 /* Controller to get get Legal Advice */
 exports.legalAdvice = (req, res) => {
   res.render('legalAdvice', { title: 'Legal Advice' });

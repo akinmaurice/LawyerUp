@@ -8,7 +8,7 @@
     "scripts": {
         "dev": "nodemon ./start.js",
         "start": "node ./start.js",
-        "test": "mocha --recursive"
+        "test": "nyc --reporter=text mocha --recursive"
     },
     "dependencies": {
         "body-parser": "~1.17.1",
@@ -51,8 +51,10 @@
         "eslint-plugin-import": "^2.8.0",
         "eslint-plugin-jsx-a11y": "^6.0.2",
         "eslint-plugin-react": "^7.5.1",
+        "loadtest": "^3.0.3",
         "mocha": "^5.1.1",
         "nodemon": "^1.12.1",
+        "nyc": "^11.8.0",
         "supertest": "^3.1.0"
     }
 }

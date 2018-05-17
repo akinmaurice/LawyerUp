@@ -30,9 +30,6 @@ html(lang="en")
             li.nav-item.active
               a(href="/directory").nav-link Lawyer Directory
                 span.sr-only (current)
-            li.nav-item.active
-              a(href="/register").nav-link Sign Up
-                span.sr-only (current)
             if user
               li.nav-item.active.dropdown
                 a(href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false").nav-link.dropdown-toggle #{user.email}
@@ -47,6 +44,9 @@ html(lang="en")
                     i.fa.fa-sign-out &nbsp;&nbsp;&nbsp;
                       span Logout
             else
+              li.nav-item.active
+                a(href="/register").nav-link Sign Up
+                  span.sr-only (current)
               li.nav-item.active
                 a(href="/login").nav-link Sign In
                   span.sr-only (current)
